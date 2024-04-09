@@ -9,7 +9,7 @@ $("#vehicle").on('click', function () { router("vehicle") });
 
 
 function router(router) {
-    $('#main-container').load('/FundamentosWebFornt/src/app/views' + router + '.html');
+    $('#main-container').load('/src/app/views' + router + '.html');
 }
 
 
