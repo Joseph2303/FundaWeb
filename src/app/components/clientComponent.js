@@ -33,10 +33,10 @@ async function cargarTabla() {
     $("#data-tableClient").empty(); 
     response.data.forEach(cliente => {
         let filaHTML = `<tr data-ced="${cliente.cedula}">
-            <td>${cliente.cedula}</td>
             <td>${cliente.nombre}</td>
             <td>${cliente.apellidos}</td>
             <td>${cliente.estadoCivil}</td>
+            <td>${cliente.cedula}</td>
             <td>${cliente.direccion}</td>
             <td>${cliente.profesion}</td>
             <td>${cliente.nacionalidad}</td>
