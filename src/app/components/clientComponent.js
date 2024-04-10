@@ -44,7 +44,6 @@ async function cargarTabla() {
             <td>${cliente.apellidos}</td>
             <td>${cliente.estadoCivil}</td>
             <td>${cliente.cedula}</td>
-            <td>${cliente.cedula}</td>
             <td>${cliente.direccion}</td>
             <td>${cliente.profesion}</td>
             <td>${cliente.nacionalidad}</td>
