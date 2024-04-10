@@ -29,14 +29,15 @@ async function update() {
     profesion: $("#profesionAct").val(),
     nacionalidad: $("#nacionalidadAct").val()
   };
-
+  console.log(clienteData)
   try {
-    await actualizarCliente($("#cedulaAct").val(), clienteData);
+    await actualizarCliente($("#cedulaAct").val(), clienteData); // Pasar la cédula como primer parámetro
     cargarTabla();
   } catch (error) {
     console.error('Error al actualizar el cliente:', error);
   }
 }
+
 
 
 async function destroy(cedula) {  
