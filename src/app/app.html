@@ -5,28 +5,73 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Welcome</title>
+    <style>
+        /* Estilos adicionales */
+        body {
+            background-color: #f8f9fa; /* Color de fondo */
+        }
+        .container {
+            margin-top: 50px; /* Margen superior */
+        }
+        h1 {
+            color: #007bff; /* Color del texto */
+        }
+    </style>
 </head>
 
 <body>
-
-    <head>
-
-    </head>
-
     <main class="container">
-<br>
-<br>
-<br>
-        <center>
-            <h1>BIENVENIDO A LA ANGENDA</h1>
-            <img img src="/src/app/Assets/img/200w.gif"
-          style=" width: 500px; height: 500px;">
-        </center>
-
+        <div class="text-center">
+            <h1>BIENVENIDO A LA AGENDA</h1>
+            <img src="/src/app/Assets/img/200w.gif" class="img-fluid mt-4 rounded-circle" style="width: 300px;" alt="Imagen de bienvenida">
+        </div>
+        <div class="row mt-5">
+            <div class="col-md-4">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Acerca de</h5>
+                        <p class="card-text">Sobre nosotros</p>
+                        <button type="button" class="btn btn-outline-dark" data-bs-toggle="modal" data-bs-target="#verMasModal">Ver más</button>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Contacto</h5>
+                        <p class="card-text">¡Puedes contactarnos!</p>
+                        <a href="https://wa.me/50672587929" class="btn btn-outline-success">WhatsApp</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Redes sociales</h5>
+                        <p class="card-text">Échale un vistaso</p>
+                        <a href="https://www.facebook.com/darwinjavier.silvagadea.7" class="btn btn-outline-primary">Facebook</a>
+                    </div>
+                </div>
+            </div>
+        </div>
     </main>
-    <footer>
-    </footer>
 
+    <div class="modal fade" id="verMasModal" tabindex="-1" aria-labelledby="verMasModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="verMasModalLabel">Acerca de</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <p>Aquí puedes agregar información adicional sobre tu empresa o proyecto.</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                </div>
+            </div>
+        </div>
+    </div>
 </body>
 
 </html>
