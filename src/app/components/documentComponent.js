@@ -39,7 +39,7 @@ async function update(numeroDocumento) {
 async function destroy(numeroDocumento) {
   try {
     await eliminarDocumento(numeroDocumento);
-    cargarTablaDocumentos(); // Recargar la tabla después de la eliminación
+    cargarTabla(); 
   } catch (error) {
     console.error('Error al eliminar el documento:', error);
   }
