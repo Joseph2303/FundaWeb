@@ -13,7 +13,7 @@
             <h1 class="text-center">Terrenos</h1>
             <div class="d-flex justify-content-between align-items-center mt-3">
                 <div class="input-group w-50">
-                    <input type="text" class="form-control" placeholder="Buscar Terrenos..">
+                    <input type="text" class="form-control" placeholder="Buscar Documento..">
                     <button class="btn btn-outline-secondary" type="button" id="button-addon2">Buscar</button>
                 </div>
                 <button class="btn btn-primary" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal">Agregar Terreno</button>
@@ -24,7 +24,7 @@
 
     <main class="container mt-5">
         <div style="float: right;">
-            <button type="button" class="btn btn-outline-primary">Actualizar</button>
+            <button type="button" class="btn btn-outline-primary" type="button" data-bs-toggle="modal" data-bs-target="#Actualizar">Actualizar</button>
             <button type="button" class="btn btn-outline-danger">Eliminar</button>
         </div>
         <br>
@@ -65,7 +65,7 @@
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Agregar Terreno</h5>
+                    <h5 class="modal-title" id="exampleModalLabel">Agregar Documento</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
@@ -95,6 +95,41 @@
             </div>
         </div>
     </div>
-</body>
 
+
+    <div class="modal fade" id="Actualizar" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Actualizar Documento</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <div class="mb-3">
+                            <label for="nombre" class="form-label">N° Documento:</label>
+                            <input type="text" class="form-control" id="nombre">
+                        </div>
+                        <div class="mb-3">
+                            <label for="email" class="form-label">Fecha de Registro:</label>
+                            <input type="email" class="form-control" id="email">
+                        </div>
+                        <div class="mb-3">
+                            <label for="telefono" class="form-label">Cedula Compareciente 1:</label>
+                            <input type="text" class="form-control" id="telefono">
+                        </div>
+                        <div class="mb-3">
+                            <label for="telefono" class="form-label">Cedula Compareciente 2:</label>
+                            <input type="text" class="form-control" id="telefono">
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cancelar</button>
+                    <button type="button" class="btn btn-primary">Actualizar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
 </html>
