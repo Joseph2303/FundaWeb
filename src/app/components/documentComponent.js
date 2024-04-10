@@ -51,16 +51,17 @@ $(document).ready(function () {
 
 async function cargarTabla() {
   try {
-      console.log("Cargando documentos...");
-      const response = await getDocumentos(); // Esperar a que se resuelva la promesa
+      console.log("Esta levantando");
+      const response =  await getDocumentos();
       console.log('Documentos obtenidos:', response);
+      console.log('Datos de documentos:', response.data);
       $("#dataTableDocumentos").empty(); // Vaciar la tabla antes de llenarla
       response.data.forEach(documento => {
           let filaHTML = `<tr data-id="${documento.numeroDocumento}">
               <td>${documento.numeroDocumento}</td>
               <td>${documento.fechaRegistro}</td>
-              <td>${documento.clienteCompareciente1}</td>
-              <td>${documento.clienteCompareciente2}</td>
+              <td>${documento.cedulaCompareciente1}</td>
+              <td>${documento.cedulaCompareciente2}</td>
               <td><input type="checkbox" class="checkbox-accion" onchange=""></td>
           </tr>`;
           $("#dataTableDocumentos").append(filaHTML); // Agregar la fila a la tabla
@@ -71,5 +72,7 @@ async function cargarTabla() {
 }
 
 
+
 $('#guardarDocument').click(send);
 $('#updateDocument').click(update);
+export { destroy };
