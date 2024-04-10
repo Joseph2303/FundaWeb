@@ -69,6 +69,6 @@ function llenarFormularioActualizacion(terreno, codigo) {
     $("#colindanteOesteAct").val(terreno.colindanteOeste);
     $("#medidaAct").val(terreno.medida);
     $("#numeroPlanoAct").val(terreno.numeroPlano);
-    $("#documentoAct").val(terreno.documento);
+    $("#documentoAct").val(terreno.documento.numeroDocumento);
 }
 
