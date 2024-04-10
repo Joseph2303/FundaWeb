@@ -11,10 +11,11 @@ async function send() {
         numeroMotor: $("#numeroMotor").val(),
         marcaMotor: $("#marcaMotor").val(),
         valorFiscal: $("#valorFiscal").val(),
-        documento: $("#documento").val()
+        numeroDocumento: $("#documento").val()
     };
 
     try {
+        console.log(vehiculoData);
         await guardarVehiculo(vehiculoData);
         cargarTabla();
     } catch (error) {
@@ -31,7 +32,7 @@ async function update() {
         marcaMotor: $("#marcaMotorAct").val(),
         numeroChasis: $("#numeroChasisAct").val(),
         numeroMotor: $("#numeroMotorAct").val(),
-        documento: $("#documentoAct").val()
+        numeroDocumento: $("#documentoAct").val()
     };
     console.log(vehiculoData)
     try {
@@ -64,14 +65,14 @@ async function cargarTabla() {
             const vehiculoString = JSON.stringify(vehiculo);
             let filaHTML = `<tr data-placa="${vehiculo.placa}" data-vehicle='${vehiculoString}'>
                 <td>${vehiculo.placa}</td>
-                <td>${vehiculo.marca}</td>
+                <td>${vehiculo.placa}</td>
                 <td>${vehiculo.estilo}</td>
                 <td>${vehiculo.carroceria}</td>
+                <td>${vehiculo.marca}</td>
+                <td>${vehiculo.marcaMotor}</td>
                 <td>${vehiculo.numeroChasis}</td>
                 <td>${vehiculo.numeroMotor}</td>
-                <td>${vehiculo.marcaMotor}</td>
-                <td>${vehiculo.valorFiscal}</td>
-                <td>${vehiculo.documento}</td>
+                <td>${vehiculo.numeroDocumento}</td>
                 <td><input type="checkbox" class="checkbox-accion" onchange=""></td>
             </tr>`;
             $("#data-tableVehiculo").append(filaHTML);
