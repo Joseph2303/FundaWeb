@@ -14,6 +14,20 @@ async function crearCliente(nuevoCliente) {
   }
 }
 
+async function obtenerClientes() {
+    try {
+        console.log('Clientes obtenidos:', response.data);
+      const response = await axiosApi.get('/clientes');
+      console.log('Clientes obtenidos:', response.data);
+      // Aquí puedes retornar la lista de clientes o hacer algún otro procesamiento
+      return response.data;
+    } catch (error) {
+        console.log('Clientes obtenidos:', response.data);
+      console.error('Error al obtener los clientes:', error);
+      return [];
+    }
+  }
+
 async function actualizarCliente(cedula, clienteActualizado) {
   try {
     const response = await axiosApi.put(`/cliente/${cedula}`, clienteActualizado, {
