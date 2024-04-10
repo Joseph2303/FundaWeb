@@ -1,43 +1,44 @@
-function send(){
+function send() {
+    let clienteData = {
+        nombre: $("#nombre").val(),
+        apellidos: $("#apellidos").val(),
+        estadoCivil: $("#estadoCivil").val(),
+        direccion: $("#direccion").val(),
+        profesion: $("#profesion").val(),
+        nacionalidad: $("#nacionalidad").val()
+    };
 
+    crearCliente(clienteData); 
 }
 
-function update(){
-
+function update() {
 }
 
-function destroy(){
-
+function destroy() {
 }
 
 $(document).ready(function () {
     cargarTabla();
 });
 
-function cargarTabla() {
-    $.ajax({
-        url: "http://localhost:8080/cliente",
-        type: "GET"
-    }).done(function (response) {
-        $("#data-tableClient").empty(); // Vaciar la tabla antes de cargar los nuevos datos
-        var respObj = response.data;
-        for (k in respObj) {         
-            let filaHTML = `<tr data-ced="${respObj[k].cedula}">
-                <td>${respObj[k].cedula}</td>
-                <td>${respObj[k].nombre}</td>
-                <td>${respObj[k].apellidos}</td>
-                <td>${respObj[k].direccion}</td>
-                <td>${respObj[k].profesion}</td>
-                <td>${respObj[k].nacionalidad}</td>
-                <td><input type="checkbox" class="checkbox-accion" onchange=""></td>
-            </tr>`;
+async function cargarTabla() {
+  try {
+    const response = await axiosApi.get('/cliente');
 
-            let fila = $(filaHTML);
-
-            $("#data-tableClient").append(fila);
-        }
-    }).fail(function (error) {
-        console.log(error)
+    $("#data-tableClient").empty(); 
+    response.data.forEach(cliente => {
+        let filaHTML = `<tr data-ced="${cliente.cedula}">
+            <td>${cliente.cedula}</td>
+            <td>${cliente.nombre}</td>
+            <td>${cliente.apellidos}</td>
+            <td>${cliente.direccion}</td>
+            <td>${cliente.profesion}</td>
+            <td>${cliente.nacionalidad}</td>
+            <td><input type="checkbox" class="checkbox-accion" onchange=""></td>
+        </tr>`;
+        $("#data-tableClient").append(filaHTML);
     });
+  } catch (error) {
+    console.error('Error al obtener los clientes:', error);
+  }
 }
-
