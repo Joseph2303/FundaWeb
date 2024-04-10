@@ -1,4 +1,4 @@
-import { obtenerTerrenos, guardarTerreno, eliminarTerreno, actualizarTerreno } from "../Service/TerrenoService.js";
+import { obtenerTerrenos, guardarTerreno} from "../Service/TerrenoService.js";
 
 async function send() {
     const terrenoData = {
@@ -12,6 +12,7 @@ async function send() {
     };
 
     try {
+        console.log(terrenoData);
         await guardarTerreno(terrenoData);
         cargarTabla();
     } catch (error) {
@@ -74,7 +75,7 @@ async function cargarTabla() {
     }
 }
 
-$('#sendTerreno').click(send);
+$('#sendTerrain').click(send);
 $('#updateTerreno').click(update);
 
 export { destroy, update, send };
