@@ -1,13 +1,16 @@
+
+import { getDocumentos, guardarDocumento, getDocumentoByNumero, eliminarDocumento, actualizarDocumento } from "../Service/DocumentoService.js";
 async function send() {
-    const documentoData = {
-      numero: $("#numero").val(),
-      "Fecha de Registro": $("#fechaRegistro").val(),
-      "Cedula Compareciente 1": $("#cedulaCompareciente1").val(),
-      "Cedula Compareciente 2": $("#cedulaCompareciente2").val()
-    };
-    console.log(documentoData);
   
+  const documentoData = {
+      numeroDocumento: $("#numeroDocumento").val(),
+      "fechaRegistro": $("#fechaRegistro").val(),
+      "cedulaCompareciente1": $("#cedulaCompareciente1").val(),
+      "cedulaCompareciente2": $("#cedulaCompareciente2").val()
+    };
+    
     try {
+      console.log(documentoData);
       await guardarDocumento(documentoData);
       cargarTablaDocumentos(); // Recargar la tabla después de crear el documento
     } catch (error) {
@@ -18,7 +21,7 @@ async function send() {
 
 async function update(numeroDocumento) {
     const documentoData = {
-      numero: $("#numero").val(),
+      numero: $("#numeroDocumento").val(),
       "Fecha de Registro": $("#fechaRegistro").val(),
       "Cedula Compareciente 1": $("#cedulaCompareciente1").val(),
       "Cedula Compareciente 2": $("#cedulaCompareciente2").val()
@@ -46,15 +49,16 @@ $(document).ready(function () {
     cargarTabla();
 });
 
-function cargarTablaDocumentos() {   // ver si funciona cuando se puedan ingresar vehiculos o terrenos
+function cargarTabla() {   // ver si funciona cuando se puedan ingresar vehiculos o terrenos
     try {
         console.log("Esta levantando");
-        const response = obtenerDocumentos();
+        const response =  getDocumentos();
         console.log('Documentos obtenidos:', response);
         $("#dataTableDocumentos").empty(); // Vaciar la tabla antes de llenarla
+        console.log(response);
         response.data.forEach(documento => {
-            let filaHTML = `<tr data-id="${documento.id}">
-                <td>${documento.numero}</td>
+            let filaHTML = `<tr data-id="${documento.numeroDocumento}">
+                <td>${documento.numeroDocumento}</td>
                 <td>${documento.fechaRegistro}</td>
                 <td>${documento.cedulaCompareciente1}</td>
                 <td>${documento.cedulaCompareciente2}</td>
@@ -68,3 +72,5 @@ function cargarTablaDocumentos() {   // ver si funciona cuando se puedan ingresa
 }
 
 
+$('#guardarDocument').click(send);
+$('#updateDocument').click(update);
