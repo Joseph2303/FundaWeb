@@ -36,6 +36,7 @@ async function cargarTabla() {
             <td>${cliente.cedula}</td>
             <td>${cliente.nombre}</td>
             <td>${cliente.apellidos}</td>
+            <td>${cliente.estadoCivil}</td>
             <td>${cliente.direccion}</td>
             <td>${cliente.profesion}</td>
             <td>${cliente.nacionalidad}</td>
