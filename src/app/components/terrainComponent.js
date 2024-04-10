@@ -58,13 +58,11 @@ async function cargarTabla() {
         $("#data-tableTerreno").empty();
         response.forEach(terreno => {
             const terrenoString = JSON.stringify(terreno);
-            let filaHTML = `<tr data-id="${terreno.numeroPlano}" data-terreno='${terrenoString}'>
+            let filaHTML = `<tr data-id="${terreno.codigo}" data-terreno='${terrenoString}'>
                 <td>${terreno.colindanteNorte}</td>
                 <td>${terreno.colindanteSur}</td>
-                <td>${terreno.colindanteEste}</td>
                 <td>${terreno.colindanteOeste}</td>
                 <td>${terreno.medida}</td>
-                <td>${terreno.numeroPlano}</td>
                 <td>${terreno.documento}</td>
                 <td><input type="checkbox" class="checkbox-accion" onchange=""></td>
             </tr>`;
