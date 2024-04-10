@@ -1,4 +1,4 @@
-import { obtenerClientes, crearCliente } from "../Service/ClienteService.js";
+import { obtenerClientes, crearCliente, eliminarCliente } from "../Service/ClienteService.js";
 
 async function send() {
   const clienteData = {
@@ -41,9 +41,7 @@ async function update() {
 }
 
 
-async function destroy() {
-  const cedula = $("#cedula").val();
-  
+async function destroy(cedula) {  
   try {
     await eliminarCliente(cedula);
     cargarTabla();
@@ -78,3 +76,7 @@ async function cargarTabla() {
   }
 }
 $('#sendClient').click(send);
+
+
+
+export { destroy };
