@@ -2,7 +2,7 @@ import { destroy } from "../components/clientComponent.js";
 const tabla = document.getElementById("client-table");
 const btnBox = document.getElementById("btn-box");
 const eliminarButton = document.getElementById("btn-eliminar");
-const actualizarButton = document.getElementById("actualizar");
+const actualizarButton = document.getElementById("btn-actualizar");
 const deleteButton = document.getElementById("delete");
 const updateBtn = document.getElementById("update");
 
@@ -71,3 +71,29 @@ eliminarButton.addEventListener('click', async function (event) {
     }
 });
 
+actualizarButton.addEventListener('click', function (event) {
+    const checkboxes = document.querySelectorAll('input[type="checkbox"]:checked');
+    
+    // Verificar si se ha seleccionado al menos un checkbox
+    if (checkboxes.length > 0) {
+        const filaSeleccionada = checkboxes[0].closest('tr');
+        const clienteDataString = filaSeleccionada.getAttribute('data-cliente');
+        const cedula = filaSeleccionada.getAttribute('data-ced');
+        const clienteData = JSON.parse(clienteDataString);
+        llenarFormularioActualizacion(clienteData,cedula); // Llenar los campos del formulario de actualización
+    } else {
+        alert('Por favor, seleccione un cliente para actualizar.');
+    }
+});
+
+// Función para llenar los campos del formulario de actualización con los datos del cliente seleccionado
+// Función para llenar los campos del formulario de actualización con los datos del cliente seleccionado
+function llenarFormularioActualizacion(cliente,cedula) {
+    $("#cedulaAct").val(cedula);
+    $("#nombreAct").val(cliente.nombre);
+    $("#apellidosAct").val(cliente.apellidos);
+    $("#estadoCivilAct").val(cliente.estadoCivil);
+    $("#direccionAct").val(cliente.direccion);
+    $("#profesionAct").val(cliente.profesion);
+    $("#nacionalidadAct").val(cliente.nacionalidad);
+}

@@ -45,7 +45,7 @@
     </header>
     <main class="container mt-5">
         <div id="btn-box" style="float: right; display: none;">
-            <button type="button" class="btn btn-outline-primary" type="button" data-bs-toggle="modal"
+            <button id="btn-actualizar" type="button" class="btn btn-outline-primary" type="button" data-bs-toggle="modal"
                 data-bs-target="#Actualizar">Actualizar</button>
             <button id="btn-eliminar" type="button" class="btn btn-outline-danger">Eliminar</button>
         </div>
@@ -130,38 +130,43 @@
                 <div class="modal-body">
                     <form>
                         <div class="mb-3">
-                            <label for="nombre" class="form-label">Nombre</label>
-                            <input type="text" class="form-control" id="nombre">
+                            <label for="cedulaAct" class="form-label">Cedula</label>
+                            <input type="text" class="form-control" id="cedulaAct" readonly>
                         </div>
                         <div class="mb-3">
-                            <label for="apellidos" class="form-label">Apellidos</label>
-                            <input type="text" class="form-control" id="apellidos">
+                            <label for="nombreAct" class="form-label">Nombre</label>
+                            <input type="text" class="form-control" id="nombreAct">
                         </div>
                         <div class="mb-3">
-                            <label for="estadoCivil" class="form-label">Estado civil</label>
-                            <input type="text" class="form-control" id="estadoCivil">
+                            <label for="apellidosAct" class="form-label">Apellidos</label>
+                            <input type="text" class="form-control" id="apellidosAct">
                         </div>
                         <div class="mb-3">
-                            <label for="direccion" class="form-label">Direccion</label>
-                            <input type="text" class="form-control" id="direccion">
+                            <label for="estadoCivilAct" class="form-label">Estado civil</label>
+                            <input type="text" class="form-control" id="estadoCivilAct">
                         </div>
                         <div class="mb-3">
-                            <label for="profesion" class="form-label">Profesion</label>
-                            <input type="text" class="form-control" id="profesion">
+                            <label for="direccionAct" class="form-label">Direccion</label>
+                            <input type="text" class="form-control" id="direccionAct">
                         </div>
                         <div class="mb-3">
-                            <label for="nacionalidad" class="form-label">Nacionalidad</label>
-                            <input type="text" class="form-control" id="nacionalidad">
+                            <label for="profesionAct" class="form-label">Profesion</label>
+                            <input type="text" class="form-control" id="profesionAct">
+                        </div>
+                        <div class="mb-3">
+                            <label for="nacionalidadAct" class="form-label">Nacionalidad</label>
+                            <input type="text" class="form-control" id="nacionalidadAct">
                         </div>
                     </form>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cancelar</button>
-                    <button id="sendClient" type="button" class="btn btn-primary">Actualizar</button>
+                    <button id="updateClient" type="button" class="btn btn-primary">Actualizar</button>
                 </div>
             </div>
         </div>
     </div>
+    
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.4/jquery.min.js"
         integrity="sha512-pumBsjNRGGqkPzKHndZMaAG+bir374sORyzM3uulLV14lN5LyykqNk8eEeUlUkB3U0M4FApyaHraT65ihJhDpQ=="

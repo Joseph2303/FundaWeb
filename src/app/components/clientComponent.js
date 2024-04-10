@@ -1,4 +1,4 @@
-import { obtenerClientes, crearCliente, eliminarCliente } from "../Service/ClienteService.js";
+import { obtenerClientes, crearCliente, eliminarCliente, actualizarCliente } from "../Service/ClienteService.js";
 
 async function send() {
   const clienteData = {
@@ -22,18 +22,18 @@ async function send() {
 
 async function update() {
   const clienteData = {
-    cedula: $("#cedula").val(),
-    nombre: $("#nombre").val(),
-    apellidos: $("#apellidos").val(),
-    estadoCivil: $("#estadoCivil").val(),
-    direccion: $("#direccion").val(),
-    profesion: $("#profesion").val(),
-    nacionalidad: $("#nacionalidad").val()
+    cedula: $("#cedulaAct").val(),
+    nombre: $("#nombreAct").val(),
+    apellidos: $("#apellidosAct").val(),
+    estadoCivil: $("#estadoCivilAct").val(),
+    direccion: $("#direccionAct").val(),
+    profesion: $("#profesionAct").val(),
+    nacionalidad: $("#nacionalidadAct").val()
   };
   console.log(clienteData);
 
   try {
-    await actualizarCliente($("#cedula").val(), clienteData);
+    await actualizarCliente($("#cedulaAct").val(), clienteData);
     cargarTabla();
   } catch (error) {
     console.error('Error al actualizar el cliente:', error);
@@ -59,7 +59,9 @@ async function cargarTabla() {
     const response = await obtenerClientes();
     $("#data-tableClient").empty();
     response.data.forEach(cliente => {
-      let filaHTML = `<tr data-ced="${cliente.cedula}">
+      // Convertir el objeto cliente a cadena JSON
+      const clienteString = JSON.stringify(cliente);
+      let filaHTML = `<tr data-ced="${cliente.cedula}" data-cliente='${clienteString}'>
             <td>${cliente.nombre}</td>
             <td>${cliente.apellidos}</td>
             <td>${cliente.estadoCivil}</td>
@@ -75,7 +77,9 @@ async function cargarTabla() {
     console.error('Error al obtener los clientes:', error);
   }
 }
+
 $('#sendClient').click(send);
+$('#updateClient').click(update);
 
 
 
