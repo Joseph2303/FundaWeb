@@ -78,26 +78,26 @@
                 <div class="modal-body">
                     <form>
                         <div class="mb-3">
-                            <label for="nombre" class="form-label">N° Documento:</label>
-                            <input type="text" class="form-control" id="nombre">
+                            <label for="numeroDocumento" class="form-label">N° Documento:</label>
+                            <input type="text" class="form-control" id="numeroDocumento">
                         </div>
                         <div class="mb-3">
-                            <label for="email" class="form-label">Fecha de Registro:</label>
-                            <input type="email" class="form-control" id="email">
+                            <label for="fechaRegistro" class="form-label">Fecha de Registro:</label>
+                            <input type="date" class="form-control" id="fechaRegistro">
                         </div>
                         <div class="mb-3">
-                            <label for="telefono" class="form-label">Cedula Compareciente 1:</label>
-                            <input type="text" class="form-control" id="telefono">
+                            <label for="cedulaCompareciente1" class="form-label">Cedula Compareciente 1:</label>
+                            <input type="text" class="form-control" id="cedulaCompareciente1">
                         </div>
                         <div class="mb-3">
-                            <label for="telefono" class="form-label">Cedula Compareciente 2:</label>
-                            <input type="text" class="form-control" id="telefono">
+                            <label for="cedulaCompareciente2" class="form-label">Cedula Compareciente 2:</label>
+                            <input type="text" class="form-control" id="cedulaCompareciente2">
                         </div>
                     </form>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-                    <button type="button" class="btn btn-primary">Guardar</button>
+                    <button id="guardarDocument" type="button" class="btn btn-primary">Guardar</button>
                 </div>
             </div>
         </div>
@@ -114,8 +114,8 @@
                 <div class="modal-body">
                     <form>
                         <div class="mb-3">
-                            <label for="nombre" class="form-label">N° Documento:</label>
-                            <input type="text" class="form-control" id="nombre">
+                            <label for="numeroDocumento" class="form-label">N° Documento:</label>
+                            <input type="text" class="form-control" id="numeroDocumento">
                         </div>
                         <div class="mb-3">
                             <label for="email" class="form-label">Fecha de Registro:</label>
@@ -133,11 +133,12 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cancelar</button>
-                    <button type="button" class="btn btn-primary">Actualizar</button>
+                    <button id="updateDocument" type="button" class="btn btn-primary">Actualizar</button>
                 </div>
             </div>
         </div>
     </div>
+    <script src="/src/app/components/documentComponent.js" type="module"></script>
 </body>
 
 </html>

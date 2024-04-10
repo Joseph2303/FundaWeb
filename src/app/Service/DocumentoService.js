@@ -1,10 +1,9 @@
-import axiosApi from './ApiService';
+import {axiosApi} from './ApiService.js';
 
 // Función para obtener todos los documentos
 async function getDocumentos() {
   try {
     const response = await axiosApi.get('/documento');
-    console.log('Documentos:', response.data);
     return response;
   } catch (error) {
     console.error('Error al obtener los documentos:', error);
@@ -16,13 +15,13 @@ async function getDocumentos() {
 async function guardarDocumento(documento) {
   try {
     const response = await axiosApi.post('/documento', documento);
-    console.log('Nuevo documento creado:', response.data);
-    return response;
+    return response.data;
   } catch (error) {
     console.error('Error al guardar el documento:', error);
-    return null;
+    throw error; // Propaga el error para manejarlo en un nivel superior si es necesario
   }
 }
+
 
 // Función para obtener un documento por número de documento
 async function getDocumentoByNumero(numeroDocumento) {
