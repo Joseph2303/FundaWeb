@@ -47,3 +47,5 @@ async function eliminarCliente(cedula) {
     console.error('Error al eliminar el cliente:', error);
   }
 }
+
+export {crearCliente, obtenerClientes, actualizarCliente, eliminarCliente}
