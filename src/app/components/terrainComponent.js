@@ -1,4 +1,4 @@
-import { obtenerTerrenos, guardarTerreno } from "../Service/TerrenoService.js";
+import { obtenerTerrenos, guardarTerreno} from "../Service/TerrenoService.js";
 
 async function send() {
     const terrenoData = {
@@ -12,6 +12,7 @@ async function send() {
     };
 console.log(terrenoData)
     try {
+        console.log(terrenoData);
         await guardarTerreno(terrenoData);
         cargarTabla();
     } catch (error) {
