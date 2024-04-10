@@ -1,4 +1,4 @@
-import { obtenerClientes } from "../Service/ClienteService";
+import { obtenerClientes } from "../Service/ClienteService.js";
 
 function send() {
     let clienteData = {

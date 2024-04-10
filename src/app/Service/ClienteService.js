@@ -1,4 +1,4 @@
-import axiosApi from './ApiService';
+import axiosApi from './ApiService.js';
 
 async function crearCliente(nuevoCliente) {
   try {
