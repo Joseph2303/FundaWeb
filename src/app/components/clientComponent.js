@@ -1,19 +1,34 @@
+function send(){
+
+}
+
+function update(){
+
+}
+
+function destroy(){
+
+}
+
 $(document).ready(function () {
     cargarTabla();
 });
 
 function cargarTabla() {
     $.ajax({
-        url: "http://localhost:8000/api/registroTardias",
+        url: "http://localhost:8080/cliente",
         type: "GET"
     }).done(function (response) {
         $("#data-tableClient").empty(); // Vaciar la tabla antes de cargar los nuevos datos
         var respObj = response.data;
         for (k in respObj) {         
-            let filaHTML = `<tr data-idRegistro="${respObj[k].idRegistroTardia}" data-justificacion="${encodeURIComponent(JSON.stringify(respObj[k].justificacion_tardia))}" data-empleado="${encodeURIComponent(JSON.stringify(respObj[k].empleado))}">
-                <td>${respObj[k].fecha}</td>
-                <td>${respObj[k].cantMinutos}</td>
-                <td id="justificacion">${justificacion}</td>
+            let filaHTML = `<tr data-ced="${respObj[k].cedula}">
+                <td>${respObj[k].cedula}</td>
+                <td>${respObj[k].nombre}</td>
+                <td>${respObj[k].apellidos}</td>
+                <td>${respObj[k].direccion}</td>
+                <td>${respObj[k].profesion}</td>
+                <td>${respObj[k].nacionalidad}</td>
                 <td><input type="checkbox" class="checkbox-accion" onchange=""></td>
             </tr>`;
 
@@ -21,7 +36,6 @@ function cargarTabla() {
 
             $("#data-tableClient").append(fila);
         }
-        mostrarMensajeDeInfo("Las aunsecias que se encuentran pendiente puedes editarlas");
     }).fail(function (error) {
         console.log(error)
     });
