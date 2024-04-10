@@ -1,4 +1,4 @@
-import { obtenerTerrenos, guardarTerreno, eliminarTerrenoPorNumero} from "../Service/TerrenoService.js";
+import { obtenerTerrenos, guardarTerreno, eliminarTerrenoPorNumero, actualizarTerrenoPorNumero} from "../Service/TerrenoService.js";
 
 async function send() {
     const terrenoData = {
@@ -32,7 +32,7 @@ async function update() {
     };
     console.log(terrenoData)
     try {
-        await actualizarTerreno($("#codigoAct").val(), terrenoData); // Pasar el código como primer parámetro
+        await actualizarTerrenoPorNumero($("#codigoAct").val(), terrenoData); // Pasar el código como primer parámetro
         cargarTabla();
     } catch (error) {
         console.error('Error al actualizar el terreno:', error);
