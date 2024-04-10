@@ -1,63 +1,58 @@
-import axiosApi from './ApiService';
+import {axiosApi} from './ApiService.js';
 
-// Función para obtener todos los vehículos
-async function obtenerVehiculos() {
+async function obtenerTerrenos() {
   try {
-    const response = await axiosApi.get('/vehiculo');
-    console.log('Vehículos:', response.data);
+    const response = await axiosApi.get('/terreno');
+    console.log('Terrenos:', response.data);
     return response.data;
   } catch (error) {
-    console.error('Error al obtener los vehículos:', error);
+    console.error('Error al obtener los terrenos:', error);
     return null;
   }
 }
 
-// Función para guardar un nuevo vehículo
-async function guardarVehiculo(vehiculo) {
+async function guardarTerreno(terreno) {
   try {
-    const response = await axiosApi.post('/vehiculo', vehiculo);
-    console.log('Nuevo vehículo creado:', response.data);
+    const response = await axiosApi.post('/terreno', terreno);
+    console.log('Nuevo terreno guardado:', response.data);
     return response.data;
   } catch (error) {
-    console.error('Error al guardar el vehículo:', error);
+    console.error('Error al guardar el terreno:', error);
     return null;
   }
 }
 
-// Función para obtener un vehículo por matrícula
-async function getVehiculoByMatricula(matricula) {
+async function obtenerTerrenoPorNumero(numeroPlano) {
   try {
-    const response = await axiosApi.get(`/vehiculo/${matricula}`);
-    console.log('Vehículo:', response.data);
+    const response = await axiosApi.get(`/terreno/${numeroPlano}`);
+    console.log('Terreno:', response.data);
     return response.data;
   } catch (error) {
-    console.error('Error al obtener el vehículo:', error);
+    console.error('Error al obtener el terreno:', error);
     return null;
   }
 }
 
-// Función para eliminar un vehículo por matrícula
-async function eliminarVehiculo(matricula) {
+async function eliminarTerrenoPorNumero(numeroPlano) {
   try {
-    const response = await axiosApi.delete(`/vehiculo/${matricula}`);
+    const response = await axiosApi.delete(`/terreno/${numeroPlano}`);
     console.log('Mensaje del servidor:', response.data);
     return response.data;
   } catch (error) {
-    console.error('Error al eliminar el vehículo:', error);
+    console.error('Error al eliminar el terreno:', error);
     return null;
   }
 }
 
-// Función para actualizar un vehículo por matrícula
-async function actualizarVehiculo(matricula, vehiculoActualizado) {
+async function actualizarTerrenoPorNumero(numeroPlano, terrenoActualizado) {
   try {
-    const response = await axiosApi.put(`/vehiculo/${matricula}`, vehiculoActualizado);
-    console.log('Vehículo actualizado:', response.data);
+    const response = await axiosApi.put(`/terreno/${numeroPlano}`, terrenoActualizado);
+    console.log('Terreno actualizado:', response.data);
     return response.data;
   } catch (error) {
-    console.error('Error al actualizar el vehículo:', error);
+    console.error('Error al actualizar el terreno:', error);
     return null;
   }
 }
 
-export { obtenerVehiculos, guardarVehiculo, getVehiculoByMatricula, eliminarVehiculo, actualizarVehiculo };
+export { obtenerTerrenos, guardarTerreno, obtenerTerrenoPorNumero, eliminarTerrenoPorNumero, actualizarTerrenoPorNumero };
