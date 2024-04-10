@@ -1,4 +1,5 @@
 function send(){
+    
 
 }
 
@@ -14,7 +15,7 @@ $(document).ready(function () {
     cargarTabla();
 });
 
-function cargarTablaDocumentos() {
+function cargarTablaDocumentos() {   // ver si funciona cuando se puedan ingresar vehiculos o terrenos
     try {
         console.log("Esta levantando");
         const response =  obtenerDocumentos();

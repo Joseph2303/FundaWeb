@@ -5,7 +5,7 @@ async function getDocumentos() {
   try {
     const response = await axiosApi.get('/documento');
     console.log('Documentos:', response.data);
-    return response.data;
+    return response;
   } catch (error) {
     console.error('Error al obtener los documentos:', error);
     return null;
