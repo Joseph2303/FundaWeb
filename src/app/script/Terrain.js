@@ -1,33 +1,10 @@
-import { destroy } from "../components/vehicleComponent.js";
+import { destroy } from "../components/terrainComponent.js";
 const tabla = document.getElementById("terrain-table");
 const btnBox = document.getElementById("btn-box");
 const eliminarButton = document.getElementById("btn-eliminar");
 const actualizarButton = document.getElementById("btn-actualizar");
 
 
-function filtrar() {
-    var inputBusqueda = document.getElementById('busquedaTerrain');
-    var filtro = inputBusqueda.value.toUpperCase();
-
-    var filas = tabla.getElementsByTagName('tr');
-
-    for (var i = 0; i < filas.length; i++) {
-        if (filas[i].getElementsByTagName('th').length === 0) {
-            var celdas = filas[i].getElementsByTagName('td');
-            var mostrarFila = false;
-
-            for (var j = 0; j < celdas.length; j++) {
-                var textoCelda = celdas[j].textContent || celdas[j].innerText;
-                if (textoCelda.toUpperCase().indexOf(filtro) > -1) {
-                    mostrarFila = true;
-                    break;
-                }
-            }
-
-            filas[i].style.display = mostrarFila ? '' : 'none';
-        }
-    }
-}
 
 
 tabla.addEventListener('change', function (event) {
@@ -55,11 +32,11 @@ eliminarButton.addEventListener('click', async function (event) {
     
     // Verificar si se ha seleccionado al menos un checkbox
     if (checkboxes.length > 0) {
-        const placa = checkboxes[0].closest('tr').getAttribute('data-placa');
+        const id = checkboxes[0].closest('tr').getAttribute('data-id');
         
-        if (confirm(`¿Está seguro de que desea eliminar el terreno con cédula ${placa}?`)) {
+        if (confirm(`¿Está seguro de que desea eliminar el terreno con cédula ${id}?`)) {
             try {
-                 destroy(placa);
+                 destroy(id);
             } catch (error) {
                 console.error('Error al eliminar el vehiculo:', error);
             }
@@ -74,10 +51,10 @@ actualizarButton.addEventListener('click', function (event) {
     
     if (checkboxes.length > 0) {
         const filaSeleccionada = checkboxes[0].closest('tr');
-        const vehicleDataString = filaSeleccionada.getAttribute('data-terrain');
-        const placa = filaSeleccionada.getAttribute('data-numeroPlano');
-        const vehicleData = JSON.parse(vehicleDataString);
-        llenarFormularioActualizacion(vehicleData,placa); // Llenar los campos del formulario de actualización
+        const objDataString = filaSeleccionada.getAttribute('data-terreno');
+        const id = filaSeleccionada.getAttribute('data-id');
+        const objData = JSON.parse(objDataString);
+        llenarFormularioActualizacion(objData,id); // Llenar los campos del formulario de actualización
     } else {
         alert('Por favor, seleccione un vehiculo para actualizar.');
     }

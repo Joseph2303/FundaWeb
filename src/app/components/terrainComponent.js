@@ -1,4 +1,4 @@
-import { obtenerTerrenos, guardarTerreno, eliminarTerreno, actualizarTerreno } from "../Service/TerrenoService.js";
+import { obtenerTerrenos, guardarTerreno } from "../Service/TerrenoService.js";
 
 async function send() {
     const terrenoData = {
@@ -10,7 +10,7 @@ async function send() {
         numeroPlano: $("#numeroPlano").val(),
         documento: $("#documento").val()
     };
-
+console.log(terrenoData)
     try {
         await guardarTerreno(terrenoData);
         cargarTabla();
@@ -57,7 +57,7 @@ async function cargarTabla() {
         $("#data-tableTerreno").empty();
         response.data.forEach(terreno => {
             const terrenoString = JSON.stringify(terreno);
-            let filaHTML = `<tr data-codigo="${terreno.codigo}" data-terreno='${terrenoString}'>
+            let filaHTML = `<tr data-id="${terreno.codigo}" data-terreno='${terrenoString}'>
                 <td>${terreno.colindanteNorte}</td>
                 <td>${terreno.colindanteSur}</td>
                 <td>${terreno.colindanteEste}</td>
@@ -74,7 +74,7 @@ async function cargarTabla() {
     }
 }
 
-$('#sendTerreno').click(send);
+$('#sendTerrain').click(send);
 $('#updateTerreno').click(update);
 
 export { destroy, update, send };

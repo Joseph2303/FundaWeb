@@ -31,7 +31,8 @@
             <h1 class="text-center">Terrenos</h1>
             <div class="d-flex justify-content-between align-items-center mt-3">
                 <div class="input-group w-50">
-                    <input id="busquedaVehicle" oninput="filtrar()" type="text" class="form-control" placeholder="Buscar Terrenos..">
+                    <input id="busquedaTerrain" oninput="filtrar()" type="text" class="form-control"
+                        placeholder="Buscar Terrenos..">
                     <button class="btn btn-outline-secondary" type="button" id="button-addon2">Buscar</button>
                 </div>
                 <button class="btn btn-primary" type="button" data-bs-toggle="modal"
@@ -40,15 +41,15 @@
         </div>
     </header>
     <main class="container mt-5">
-        <div style="float: right;">
-            <button id="btn-actualizar" type="button" class="btn btn-outline-primary" type="button" data-bs-toggle="modal"
-                data-bs-target="#Actualizar">Actualizar</button>
+        <div id="btn-box" style="float: right; display: none;">
+            <button id="btn-actualizar" type="button" class="btn btn-outline-primary" type="button"
+                data-bs-toggle="modal" data-bs-target="#Actualizar">Actualizar</button>
             <button id="btn-eliminar" type="button" class="btn btn-outline-danger">Eliminar</button>
         </div>
         <br>
         <br>
         <div class="Cajon">
-            <table class="table table-striped table-bordered">
+            <table id="terrain-table" class="table table-striped table-bordered">
                 <thead class="table-dark">
                     <tr>
                         <th>Numero de plano</th>
@@ -61,8 +62,8 @@
                         <th>Acción</th>
                     </tr>
                 </thead>
-                <tbody>
-                   
+                <tbody id="data-tableTerreno">
+
                 </tbody>
             </table>
         </div>
@@ -163,6 +164,33 @@
     </div>
     <script src="/src/app/components/terrainComponent.js" type="module"></script>
     <script src="/src/app/script/Terrain.js" type="module"></script>
+    <script>
+        const tabla = document.getElementById("terrain-table");
+        function filtrar() {
+            var inputBusqueda = document.getElementById('busquedaTerrain');
+            var filtro = inputBusqueda.value.toUpperCase();
+
+            var filas = tabla.getElementsByTagName('tr');
+
+            for (var i = 0; i < filas.length; i++) {
+                if (filas[i].getElementsByTagName('th').length === 0) {
+                    var celdas = filas[i].getElementsByTagName('td');
+                    var mostrarFila = false;
+
+                    for (var j = 0; j < celdas.length; j++) {
+                        var textoCelda = celdas[j].textContent || celdas[j].innerText;
+                        if (textoCelda.toUpperCase().indexOf(filtro) > -1) {
+                            mostrarFila = true;
+                            break;
+                        }
+                    }
+
+                    filas[i].style.display = mostrarFila ? '' : 'none';
+                }
+            }
+        }
+
+    </script>
 </body>
 
 </html>
