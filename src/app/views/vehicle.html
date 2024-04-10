@@ -53,6 +53,7 @@
             <table id="vehicle-table" class="table table-striped table-bordered">
                 <thead class="table-dark">
                     <tr>
+                        <th>#</th>
                         <th>Placa</th>
                         <th>Carroceria</th>
                         <th>Estilo</th>
@@ -60,6 +61,7 @@
                         <th>Marca Motor</th>
                         <th>N° Chasis</th>
                         <th>N° Motor</th>
+                        <th>Documento</th>
                         <th>Acción</th>
                     </tr>
                 </thead>
@@ -107,12 +109,9 @@
                             <input type="text" class="form-control" id="numeroMotor">
                         </div>
                         <div class="mb-3">
-                            <label for="documento" class="form-label">Documento</label>
-                            <select class="form-select" id="documento">
-                                <!-- Aquí se cargarán las opciones desde la base de datos mediante JavaScript -->
-                            </select>
-                        </div>
-                        
+                            <label for="documentoAct" class="form-label">Documento</label>
+                            <input type="text" class="form-control" id="documentoAct">
+                        </div>      
                     </form>
                 </div>
                 <div class="modal-footer">

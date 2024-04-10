@@ -60,7 +60,7 @@ async function cargarTabla() {
         const response = await obtenerVehiculos(); // Esperar a que se resuelva la promesa
         console.log('Vehículos obtenidos:', response);
         $("#data-tableVehiculo").empty();
-        response.data.forEach(vehiculo => {
+        response.forEach(vehiculo => {
             const vehiculoString = JSON.stringify(vehiculo);
             let filaHTML = `<tr data-placa="${vehiculo.placa}" data-vehicle='${vehiculoString}'>
                 <td>${vehiculo.placa}</td>
@@ -86,28 +86,3 @@ $('#sendVehicle').click(send);
 $('#updateVehicle').click(update);
 
 export { destroy, update, send };
-
-async function cargarDocumentos() {
-            
-    try {
-        // Obtener la lista de documentos desde la base de datos (suponiendo que hay una función llamada obtenerDocumentos en tu módulo de servicio)
-        const documentos = await obtenerDocumentos();
-        console.log(documentos)
-        // Obtener el select de documentos por su ID
-        const selectDocumento = document.getElementById('documento');
-
-        // Limpiar el select por si ya contiene opciones
-        selectDocumento.innerHTML = '';
-
-        // Iterar sobre la lista de documentos y agregar cada uno como una opción en el select
-        documentos.forEach(documento => {
-            const option = document.createElement('option');
-            option.value = documento.numeroDocumento; // Suponiendo que cada documento tiene un ID
-            option.textContent = documento.numeroDocumento; // Suponiendo que cada documento tiene un nombre
-            selectDocumento.appendChild(option);
-        });
-    } catch (error) {
-        console.error('Error al cargar los documentos:', error);
-    }
-}
-
