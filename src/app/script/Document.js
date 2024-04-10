@@ -52,22 +52,20 @@ actualizarButton.addEventListener('click', function (event) {
     // Verificar si se ha seleccionado al menos un checkbox
     if (checkboxes.length > 0) {
         const filaSeleccionada = checkboxes[0].closest('tr');
-        const objDataString = filaSeleccionada.getAttribute('data-documento');
-        const cedula = filaSeleccionada.getAttribute('data-nDocumento');
+        const objDataString = filaSeleccionada.getAttribute('data-obj');
+        const id = filaSeleccionada.getAttribute('data-id');
         const objData = JSON.parse(objDataString);
-        llenarFormularioActualizacion(objData,cedula); // Llenar los campos del formulario de actualización
+        console.log(objData)
+        llenarFormularioActualizacion(objData,id); // Llenar los campos del formulario de actualización
     } else {
         alert('Por favor, seleccione un documento para actualizar.');
     }
 });
 
 
-function llenarFormularioActualizacion(cliente,cedula) {
-    $("#cedulaAct").val(cedula);
-    $("#nombreAct").val(cliente.nombre);
-    $("#apellidosAct").val(cliente.apellidos);
-    $("#estadoCivilAct").val(cliente.estadoCivil);
-    $("#direccionAct").val(cliente.direccion);
-    $("#profesionAct").val(cliente.profesion);
-    $("#nacionalidadAct").val(cliente.nacionalidad);
+function llenarFormularioActualizacion(obj, id) {
+    $("#numeroDocumentoAct").val(id);
+    $("#fechaRegistroAct").val(obj.fechaRegistro);
+    $("#cedulaCompareciente1Act").val(obj.cedulaCompareciente1);
+    $("#cedulaCompareciente2Act").val(obj.cedulaCompareciente2);
 }

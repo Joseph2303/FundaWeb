@@ -51,13 +51,13 @@ $(document).ready(function () {
 
 async function cargarTabla() {
   try {
-      console.log("Esta levantando");
       const response =  await getDocumentos();
       console.log('Documentos obtenidos:', response);
       console.log('Datos de documentos:', response.data);
       $("#dataTableDocumentos").empty(); // Vaciar la tabla antes de llenarla
       response.data.forEach(documento => {
-          let filaHTML = `<tr data-id="${documento.numeroDocumento}">
+        const objString = JSON.stringify(documento);
+          let filaHTML = `<tr data-id="${documento.numeroDocumento}" data-obj='${objString}'>
               <td>${documento.numeroDocumento}</td>
               <td>${documento.fechaRegistro}</td>
               <td>${documento.cedulaCompareciente1}</td>

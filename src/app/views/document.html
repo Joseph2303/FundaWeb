@@ -46,8 +46,6 @@
 
     <main class="container mt-5">
         <div id="btn-box" style="float: right; display: none;">
-            <button id="btn-actualizar" type="button" class="btn btn-outline-primary" type="button"
-                data-bs-toggle="modal" data-bs-target="#Actualizar">Actualizar</button>
             <button id="btn-eliminar" type="button" class="btn btn-outline-danger">Eliminar</button>
         </div>
         <br>
@@ -103,42 +101,7 @@
             </div>
         </div>
     </div>
-
-
-    <div class="modal fade" id="Actualizar" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Actualizar Documento</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <form>
-                        <div class="mb-3">
-                            <label for="numeroDocumento" class="form-label">N° Documento:</label>
-                            <input type="text" class="form-control" id="numeroDocumento">
-                        </div>
-                        <div class="mb-3">
-                            <label for="email" class="form-label">Fecha de Registro:</label>
-                            <input type="email" class="form-control" id="email">
-                        </div>
-                        <div class="mb-3">
-                            <label for="telefono" class="form-label">Cedula Compareciente 1:</label>
-                            <input type="text" class="form-control" id="telefono">
-                        </div>
-                        <div class="mb-3">
-                            <label for="telefono" class="form-label">Cedula Compareciente 2:</label>
-                            <input type="text" class="form-control" id="telefono">
-                        </div>
-                    </form>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cancelar</button>
-                    <button id="updateDocument" type="button" class="btn btn-primary">Actualizar</button>
-                </div>
-            </div>
-        </div>
-    </div>
+    
     <script src="/src/app/components/documentComponent.js" type="module"></script>
     <script src="/src/app/script/Document.js" type="module"></script>
     <script>
