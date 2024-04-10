@@ -1,4 +1,5 @@
 function send(){
+    
 
 }
 
@@ -14,30 +15,25 @@ $(document).ready(function () {
     cargarTabla();
 });
 
-function cargarTabla() {
-    $.ajax({
-        url: "http://localhost:8080/cliente",
-        type: "GET"
-    }).done(function (response) {
-        $("#data-tableClient").empty(); // Vaciar la tabla antes de cargar los nuevos datos
-        var respObj = response.data;
-        for (k in respObj) {         
-            let filaHTML = `<tr data-ced="${respObj[k].cedula}">
-                <td>${respObj[k].cedula}</td>
-                <td>${respObj[k].nombre}</td>
-                <td>${respObj[k].apellidos}</td>
-                <td>${respObj[k].direccion}</td>
-                <td>${respObj[k].profesion}</td>
-                <td>${respObj[k].nacionalidad}</td>
+function cargarTablaDocumentos() {   // ver si funciona cuando se puedan ingresar vehiculos o terrenos
+    try {
+        console.log("Esta levantando");
+        const response =  obtenerDocumentos();
+        console.log('Documentos obtenidos:', response);
+        $("#dataTableDocumentos").empty(); // Vaciar la tabla antes de llenarla
+        response.data.forEach(documento => {
+            let filaHTML = `<tr data-id="${documento.id}">
+                <td>${documento.numero}</td>
+                <td>${documento.fechaRegistro}</td>
+                <td>${documento.cedulaCompareciente1}</td>
+                <td>${documento.cedulaCompareciente2}</td>
                 <td><input type="checkbox" class="checkbox-accion" onchange=""></td>
             </tr>`;
-
-            let fila = $(filaHTML);
-
-            $("#data-tableClient").append(fila);
-        }
-    }).fail(function (error) {
-        console.log(error)
-    });
+            $("#dataTableDocumentos").append(filaHTML); // Agregar la fila a la tabla
+        });
+    } catch (error) {
+        console.error('Error al obtener los documentos:', error);
+    }
 }
+
 
