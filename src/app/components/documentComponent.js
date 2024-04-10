@@ -1,14 +1,45 @@
-function send(){
-    
+async function send() {
+    const documentoData = {
+      numero: $("#numero").val(),
+      "Fecha de Registro": $("#fechaRegistro").val(),
+      "Cedula Compareciente 1": $("#cedulaCompareciente1").val(),
+      "Cedula Compareciente 2": $("#cedulaCompareciente2").val()
+    };
+    console.log(documentoData);
+  
+    try {
+      await guardarDocumento(documentoData);
+      cargarTablaDocumentos(); // Recargar la tabla después de crear el documento
+    } catch (error) {
+      console.error('Error al enviar los datos del documento:', error);
+    }
+  }
+  
 
-}
+async function update(numeroDocumento) {
+    const documentoData = {
+      numero: $("#numero").val(),
+      "Fecha de Registro": $("#fechaRegistro").val(),
+      "Cedula Compareciente 1": $("#cedulaCompareciente1").val(),
+      "Cedula Compareciente 2": $("#cedulaCompareciente2").val()
+    };
+    console.log(documentoData);
+  
+    try {
+      await actualizarDocumento(numeroDocumento, documentoData);
+      cargarTablaDocumentos(); // Recargar la tabla después de la actualización
+    } catch (error) {
+      console.error('Error al actualizar los datos del documento:', error);
+    }
+  }
 
-function update(){
-
-}
-
-function destroy(){
-
+async function destroy(numeroDocumento) {
+  try {
+    await eliminarDocumento(numeroDocumento);
+    cargarTablaDocumentos(); // Recargar la tabla después de la eliminación
+  } catch (error) {
+    console.error('Error al eliminar el documento:', error);
+  }
 }
 
 $(document).ready(function () {
@@ -18,7 +49,7 @@ $(document).ready(function () {
 function cargarTablaDocumentos() {   // ver si funciona cuando se puedan ingresar vehiculos o terrenos
     try {
         console.log("Esta levantando");
-        const response =  obtenerDocumentos();
+        const response = obtenerDocumentos();
         console.log('Documentos obtenidos:', response);
         $("#dataTableDocumentos").empty(); // Vaciar la tabla antes de llenarla
         response.data.forEach(documento => {
