@@ -56,7 +56,7 @@ async function cargarTabla() {
     try {
         const response = await obtenerTerrenos();
         $("#data-tableTerreno").empty();
-        response.data.forEach(terreno => {
+        response.forEach(terreno => {
             const terrenoString = JSON.stringify(terreno);
             let filaHTML = `<tr data-id="${terreno.codigo}" data-terreno='${terrenoString}'>
                 <td>${terreno.colindanteNorte}</td>
@@ -65,7 +65,7 @@ async function cargarTabla() {
                 <td>${terreno.colindanteOeste}</td>
                 <td>${terreno.medida}</td>
                 <td>${terreno.numeroPlano}</td>
-                <td>${terreno.documento}</td>
+                <td>${terreno.documento.numeroDocumento}</td>
                 <td><input type="checkbox" class="checkbox-accion" onchange=""></td>
             </tr>`;
             $("#data-tableTerreno").append(filaHTML);
