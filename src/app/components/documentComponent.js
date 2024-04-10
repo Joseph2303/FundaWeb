@@ -12,7 +12,7 @@ async function send() {
     try {
       console.log(documentoData);
       await guardarDocumento(documentoData);
-      cargarTablaDocumentos(); // Recargar la tabla después de crear el documento
+      cargarTabla(); // Recargar la tabla después de crear el documento
     } catch (error) {
       console.error('Error al enviar los datos del documento:', error);
     }
