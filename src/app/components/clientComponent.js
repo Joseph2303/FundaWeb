@@ -22,7 +22,6 @@ async function send() {
 
 async function update() {
   const clienteData = {
-    cedula: $("#cedulaAct").val(),
     nombre: $("#nombreAct").val(),
     apellidos: $("#apellidosAct").val(),
     estadoCivil: $("#estadoCivilAct").val(),
@@ -30,7 +29,6 @@ async function update() {
     profesion: $("#profesionAct").val(),
     nacionalidad: $("#nacionalidadAct").val()
   };
-  console.log(clienteData);
 
   try {
     await actualizarCliente($("#cedulaAct").val(), clienteData);
@@ -69,7 +67,7 @@ async function cargarTabla() {
             <td>${cliente.direccion}</td>
             <td>${cliente.profesion}</td>
             <td>${cliente.nacionalidad}</td>
-            <td><input type="checkbox" class="checkbox-accion" onchange=""></td>
+            <td><input name="checkbox" type="checkbox" class="checkbox-accion" onchange=""></td>
         </tr>`;
       $("#data-tableClient").append(filaHTML);
     });
