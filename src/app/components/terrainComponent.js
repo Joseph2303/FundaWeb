@@ -59,6 +59,8 @@ async function cargarTabla() {
         response.forEach(terreno => {
             const terrenoString = JSON.stringify(terreno);
             let filaHTML = `<tr data-id="${terreno.codigo}" data-terreno='${terrenoString}'>
+                <td>${terreno.numeroPlano}</td>
+                <td>${terreno.colindanteEste}</td>
                 <td>${terreno.colindanteNorte}</td>
                 <td>${terreno.colindanteSur}</td>
                 <td>${terreno.colindanteOeste}</td>
