@@ -32,7 +32,7 @@ async function update() {
     };
     console.log(terrenoData)
     try {
-        await actualizarTerrenoPorNumero($("#codigoAct").val(), terrenoData); // Pasar el código como primer parámetro
+        await actualizarTerrenoPorNumero(numeroPlano, terrenoData); // Pasar el código como primer parámetro
         cargarTabla();
     } catch (error) {
         console.error('Error al actualizar el terreno:', error);
@@ -65,7 +65,7 @@ async function cargarTabla() {
                 <td>${terreno.colindanteOeste}</td>
                 <td>${terreno.medida}</td>
                 <td>${terreno.numeroPlano}</td>
-                <td>${terreno.documento.numeroDocumento}</td>
+                <td>${terreno.documento}</td>
                 <td><input type="checkbox" class="checkbox-accion" onchange=""></td>
             </tr>`;
             $("#data-tableTerreno").append(filaHTML);

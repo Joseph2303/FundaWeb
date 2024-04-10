@@ -42,8 +42,6 @@
     </header>
     <main class="container mt-5">
         <div id="btn-box" style="float: right; display: none;">
-            <button id="btn-actualizar" type="button" class="btn btn-outline-primary" type="button"
-                data-bs-toggle="modal" data-bs-target="#Actualizar">Actualizar</button>
             <button id="btn-eliminar" type="button" class="btn btn-outline-danger">Eliminar</button>
         </div>
         <br>
@@ -69,99 +67,7 @@
         </div>
     </main>
 
-    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Agregar Terreno</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <form>
-                        <div class="mb-3">
-                            <label for="numeroPlano" class="form-label">Numero de plano:</label>
-                            <input type="text" class="form-control" id="numeroPlano">
-                        </div>
-                        <div class="mb-3">
-                            <label for="colindanteEste" class="form-label">Colindante Este:</label>
-                            <input type="text" class="form-control" id="colindanteEste">
-                        </div>
-                        <div class="mb-3">
-                            <label for="colindanteNorte" class="form-label">Colindante Norte:</label>
-                            <input type="text" class="form-control" id="colindanteNorte">
-                        </div>
-                        <div class="mb-3">
-                            <label for="colindanteSur" class="form-label">Colindante Sur:</label>
-                            <input type="text" class="form-control" id="colindanteSur">
-                        </div>
-                        <div class="mb-3">
-                            <label for="colindanteOeste" class="form-label">Colindante Oeste:</label>
-                            <input type="text" class="form-control" id="colindanteOeste">
-                        </div>
-                        <div class="mb-3">
-                            <label for="medida" class="form-label">Medida:</label>
-                            <input type="text" class="form-control" id="medida">
-                        </div>
-                        <div class="mb-3">
-                            <label for="documento" class="form-label">N° Escritura:</label>
-                            <input type="text" class="form-control" id="documento">
-                        </div>
-                    </form>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-                    <button id="sendTerrain" type="button" class="btn btn-primary">Guardar</button>
-                </div>
-            </div>
-        </div>
-    </div>
 
-    <div class="modal fade" id="Actualizar" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Actualizar Terreno</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <form>
-                        <div class="mb-3">
-                            <label for="numeroPlanoAct" class="form-label">Numero de plano:</label>
-                            <input type="text" class="form-control" id="numeroPlanoAct">
-                        </div>
-                        <div class="mb-3">
-                            <label for="colindanteEsteAct" class="form-label">Colindante Este:</label>
-                            <input type="text" class="form-control" id="colindanteEsteAct">
-                        </div>
-                        <div class="mb-3">
-                            <label for="colindanteNorteAct" class="form-label">Colindante Norte:</label>
-                            <input type="text" class="form-control" id="colindanteNorteAct">
-                        </div>
-                        <div class="mb-3">
-                            <label for="colindanteSurAct" class="form-label">Colindante Sur:</label>
-                            <input type="text" class="form-control" id="colindanteSurAct">
-                        </div>
-                        <div class="mb-3">
-                            <label for="colindanteOesteAct" class="form-label">Colindante Oeste:</label>
-                            <input type="text" class="form-control" id="colindanteOesteAct">
-                        </div>
-                        <div class="mb-3">
-                            <label for="medidaAct" class="form-label">Medida:</label>
-                            <input type="text" class="form-control" id="medidaAct">
-                        </div>
-                        <div class="mb-3">
-                            <label for="documentoAct" class="form-label">N° Escritura:</label>
-                            <input type="text" class="form-control" id="documentoAct">
-                        </div>
-                    </form>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cancelar</button>
-                    <button id="updateTerreno" type="button" class="btn btn-primary">Actualizar</button>
-                </div>
-            </div>
-        </div>
-    </div>
     <script src="/src/app/components/terrainComponent.js" type="module"></script>
     <script src="/src/app/script/Terrain.js" type="module"></script>
     <script>

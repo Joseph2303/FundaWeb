@@ -46,7 +46,7 @@ eliminarButton.addEventListener('click', async function (event) {
     }
 });
 
-actualizarButton.addEventListener('click', function (event) {
+/*actualizarButton.addEventListener('click', function (event) {
     const checkboxes = document.querySelectorAll('input[type="checkbox"]:checked');
     
     // Verificar si se ha seleccionado al menos un checkbox
@@ -69,3 +69,4 @@ function llenarFormularioActualizacion(obj, id) {
     $("#cedulaCompareciente1Act").val(obj.cedulaCompareciente1);
     $("#cedulaCompareciente2Act").val(obj.cedulaCompareciente2);
 }
+*/

@@ -46,29 +46,5 @@ eliminarButton.addEventListener('click', async function (event) {
     }
 });
 
-actualizarButton.addEventListener('click', function (event) {
-    const checkboxes = document.querySelectorAll('input[type="checkbox"]:checked');
-    
-    if (checkboxes.length > 0) {
-        const filaSeleccionada = checkboxes[0].closest('tr');
-        const objDataString = filaSeleccionada.getAttribute('data-terreno');
-        const id = filaSeleccionada.getAttribute('data-id');
-        const objData = JSON.parse(objDataString);
-        llenarFormularioActualizacion(objData,id); // Llenar los campos del formulario de actualización
-    } else {
-        alert('Por favor, seleccione un vehiculo para actualizar.');
-    }
-});
 
-
-function llenarFormularioActualizacion(terreno, codigo) {
-    $("#codigoAct").val(codigo);
-    $("#colindanteNorteAct").val(terreno.colindanteNorte);
-    $("#colindanteSurAct").val(terreno.colindanteSur);
-    $("#colindanteEsteAct").val(terreno.colindanteEste);
-    $("#colindanteOesteAct").val(terreno.colindanteOeste);
-    $("#medidaAct").val(terreno.medida);
-    $("#numeroPlanoAct").val(terreno.numeroPlano);
-    $("#documentoAct").val(terreno.documento.numeroDocumento);
-}
 
