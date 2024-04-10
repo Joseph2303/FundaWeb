@@ -1,4 +1,4 @@
-import { obtenerTerrenos, guardarTerreno} from "../Service/TerrenoService.js";
+import { obtenerTerrenos, guardarTerreno, eliminarTerrenoPorNumero} from "../Service/TerrenoService.js";
 
 async function send() {
     const terrenoData = {
@@ -41,7 +41,7 @@ async function update() {
 
 async function destroy(codigo) {
     try {
-        await eliminarTerreno(codigo);
+        await eliminarTerrenoPorNumero(codigo);
         cargarTabla();
     } catch (error) {
         console.error('Error al eliminar el terreno:', error);
@@ -58,7 +58,7 @@ async function cargarTabla() {
         $("#data-tableTerreno").empty();
         response.forEach(terreno => {
             const terrenoString = JSON.stringify(terreno);
-            let filaHTML = `<tr data-id="${terreno.codigo}" data-terreno='${terrenoString}'>
+            let filaHTML = `<tr data-id="${terreno.numeroPlano}" data-terreno='${terrenoString}'>
                 <td>${terreno.colindanteNorte}</td>
                 <td>${terreno.colindanteSur}</td>
                 <td>${terreno.colindanteEste}</td>
