@@ -15,6 +15,7 @@ async function getDocumentos() {
 async function guardarDocumento(documento) {
   try {
     const response = await axiosApi.post('/documento', documento);
+
     return response.data;
   } catch (error) {
     console.error('Error al guardar el documento:', error);

@@ -49,28 +49,30 @@ $(document).ready(function () {
     cargarTabla();
 });
 
-function cargarTabla() {   // ver si funciona cuando se puedan ingresar vehiculos o terrenos
-    try {
-        console.log("Esta levantando");
-        const response =  getDocumentos();
-        console.log('Documentos obtenidos:', response);
-        $("#dataTableDocumentos").empty(); // Vaciar la tabla antes de llenarla
-        console.log(response);
-        response.data.forEach(documento => {
-            let filaHTML = `<tr data-id="${documento.numeroDocumento}">
-                <td>${documento.numeroDocumento}</td>
-                <td>${documento.fechaRegistro}</td>
-                <td>${documento.cedulaCompareciente1}</td>
-                <td>${documento.cedulaCompareciente2}</td>
-                <td><input type="checkbox" class="checkbox-accion" onchange=""></td>
-            </tr>`;
-            $("#dataTableDocumentos").append(filaHTML); // Agregar la fila a la tabla
-        });
-    } catch (error) {
-        console.error('Error al obtener los documentos:', error);
-    }
+async function cargarTabla() {
+  try {
+      console.log("Esta levantando");
+      const response =  await getDocumentos();
+      console.log('Documentos obtenidos:', response);
+      console.log('Datos de documentos:', response.data);
+      $("#dataTableDocumentos").empty(); // Vaciar la tabla antes de llenarla
+      response.data.forEach(documento => {
+          let filaHTML = `<tr data-id="${documento.numeroDocumento}">
+              <td>${documento.numeroDocumento}</td>
+              <td>${documento.fechaRegistro}</td>
+              <td>${documento.cedulaCompareciente1}</td>
+              <td>${documento.cedulaCompareciente2}</td>
+              <td><input type="checkbox" class="checkbox-accion" onchange=""></td>
+          </tr>`;
+          $("#dataTableDocumentos").append(filaHTML); // Agregar la fila a la tabla
+      });
+  } catch (error) {
+      console.error('Error al obtener los documentos:', error);
+  }
 }
+
 
 
 $('#guardarDocument').click(send);
 $('#updateDocument').click(update);
+export { destroy };
