@@ -1,5 +1,27 @@
-function send(){
+function send() {
+    let clienteData = {
+        nombre: $("#nombre").val(),
+        apellidos: $("#apellidos").val(),
+        estadoCivil: $("#estadoCivil").val(),
+        direccion: $("#direccion").val(),
+        profesion: $("#profesion").val(),
+        nacionalidad: $("#nacionalidad").val()
+    };
 
+    let jsonData = JSON.stringify(clienteData);
+
+    $.ajax({
+        url: "http://localhost:8080/cliente",
+        type: "POST",
+        data: { data: jsonData }, 
+        success: function(response) {
+            console.log(response);
+            cargarTabla(); 
+        },
+        error: function(xhr, status, error) {
+            console.log(xhr);
+        }
+    });
 }
 
 function update(){
@@ -41,3 +63,4 @@ function cargarTabla() {
     });
 }
 
+$("#sendClient").click(send);
