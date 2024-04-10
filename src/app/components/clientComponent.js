@@ -24,6 +24,7 @@ $(document).ready(function () {
 async function cargarTabla() {
   try {
     const response = await axiosApi.get('/cliente');
+    
     $("#data-tableClient").empty(); 
     response.data.forEach(cliente => {
         let filaHTML = `<tr data-ced="${cliente.cedula}">
