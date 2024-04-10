@@ -1,3 +1,5 @@
+import { obtenerClientes } from "../Service/ClienteService";
+
 function send() {
     let clienteData = {
         nombre: $("#nombre").val(),
@@ -18,13 +20,16 @@ function destroy() {
 }
 
 $(document).ready(function () {
+  console.log("esta levantando");
     cargarTabla();
+
 });
 
 async function cargarTabla() {
   try {
-    const response = await axiosApi.get('/cliente');
-
+    console.log("esta levantando");
+    const response = await obtenerClientes();
+    console.log(response);
     $("#data-tableClient").empty(); 
     response.data.forEach(cliente => {
         let filaHTML = `<tr data-ced="${cliente.cedula}">
