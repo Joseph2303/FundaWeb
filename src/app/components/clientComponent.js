@@ -43,13 +43,9 @@ $(document).ready(function () {
 
 async function cargarTabla() {
   try {
-    const response = await fetch("http://localhost:8080/cliente");
-    console.log(response);
-
-    if (!response.ok) {
-      throw new Error("Error al obtener los clientes");
-    }
-    const data = await response.json();
+    console.log("esta levantando");
+    const response = await obtenerClientes();
+    console.log('Clientes obtenidos:', response);
     $("#data-tableClient").empty(); 
     data.forEach(cliente => {
      
@@ -57,6 +53,7 @@ async function cargarTabla() {
             <td>${cliente.cedula}</td>
             <td>${cliente.nombre}</td>
             <td>${cliente.apellidos}</td>
+            <td>${cliente.estadoCivil}</td>
             <td>${cliente.direccion}</td>
             <td>${cliente.profesion}</td>
             <td>${cliente.nacionalidad}</td>
