@@ -17,7 +17,7 @@ async function guardarDocumento(documento) {
   try {
     const response = await axiosApi.post('/documento', documento);
     console.log('Nuevo documento creado:', response.data);
-    return response.data;
+    return response;
   } catch (error) {
     console.error('Error al guardar el documento:', error);
     return null;
@@ -29,7 +29,7 @@ async function getDocumentoByNumero(numeroDocumento) {
   try {
     const response = await axiosApi.get(`/documento/${numeroDocumento}`);
     console.log('Documento:', response.data);
-    return response.data;
+    return response;
   } catch (error) {
     console.error('Error al obtener el documento:', error);
     return null;
@@ -41,7 +41,7 @@ async function eliminarDocumento(numeroDocumento) {
   try {
     const response = await axiosApi.delete(`/documento/${numeroDocumento}`);
     console.log('Mensaje del servidor:', response.data);
-    return response.data;
+    return response;
   } catch (error) {
     console.error('Error al eliminar el documento:', error);
     return null;
@@ -53,7 +53,7 @@ async function actualizarDocumento(numeroDocumento, documentoActualizado) {
   try {
     const response = await axiosApi.put(`/documento/${numeroDocumento}`, documentoActualizado);
     console.log('Documento actualizado:', response.data);
-    return response.data;
+    return response;
   } catch (error) {
     console.error('Error al actualizar el documento:', error);
     return null;
