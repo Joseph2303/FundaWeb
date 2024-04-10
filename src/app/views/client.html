@@ -27,23 +27,15 @@
                 <tr>
                     <th>#</th>
                     <th>Nombre</th>
-                    <th>Email</th>
-                    <th>Teléfono</th>
+                    <th>Apellidos</th>
+                    <th>Estado civil</th>
+                    <th>Direccion</th>
+                    <th>Profesion</th>
+                    <th>Nacionalidad</th>
                 </tr>
             </thead>
-            <tbody>
-                <tr>
-                    <td>1</td>
-                    <td>John Doe</td>
-                    <td>john@example.com</td>
-                    <td>123-456-789</td>
-                </tr>
-                <tr>
-                    <td>2</td>
-                    <td>Jane Smith</td>
-                    <td>jane@example.com</td>
-                    <td>987-654-321</td>
-                </tr>
+            <tbody id="data-tableClient">
+
             </tbody>
         </table>
     </main>
@@ -62,18 +54,30 @@
                             <input type="text" class="form-control" id="nombre">
                         </div>
                         <div class="mb-3">
-                            <label for="email" class="form-label">Email</label>
-                            <input type="email" class="form-control" id="email">
+                            <label for="apellidos" class="form-label">Apellidos</label>
+                            <input type="text" class="form-control" id="apellidos">
                         </div>
                         <div class="mb-3">
-                            <label for="telefono" class="form-label">Teléfono</label>
-                            <input type="text" class="form-control" id="telefono">
+                            <label for="estadoCivil" class="form-label">Estado civil</label>
+                            <input type="text" class="form-control" id="estadoCivil">
+                        </div>
+                        <div class="mb-3">
+                            <label for="direccion" class="form-label">Direccion</label>
+                            <input type="text" class="form-control" id="direccion">
+                        </div>
+                        <div class="mb-3">
+                            <label for="profesion" class="form-label">Profesion</label>
+                            <input type="text" class="form-control" id="profesion">
+                        </div>
+                        <div class="mb-3">
+                            <label for="nacionalidad" class="form-label">Nacionalidad</label>
+                            <input type="text" class="form-control" id="nacionalidad">
                         </div>
                     </form>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-                    <button type="button" class="btn btn-primary">Guardar</button>
+                    <button id="send" type="button" class="btn btn-primary">Guardar</button>
                 </div>
             </div>
         </div>
