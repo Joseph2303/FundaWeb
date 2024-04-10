@@ -1,4 +1,4 @@
-import { obtenerClientes } from "../Service/ClienteService";
+import { obtenerClientes } from "../Service/ClienteService.js";
 
 function send() {
     let clienteData = {
@@ -29,7 +29,7 @@ async function cargarTabla() {
   try {
     console.log("esta levantando");
     const response = await obtenerClientes();
-    console.log(response);
+    console.log('Clientes obtenidos:', response);
     $("#data-tableClient").empty(); 
     response.data.forEach(cliente => {
         let filaHTML = `<tr data-ced="${cliente.cedula}">
