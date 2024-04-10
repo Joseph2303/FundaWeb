@@ -6,7 +6,105 @@
     <title>Document</title>
 </head>
 <body>
-    <header></header>
-    <h1>Terrenos</h1>
+    <header>
+        <div class="container mt-5">
+            <h1 class="text-center">Terrenos</h1>
+            <div class="d-flex justify-content-between align-items-center mt-3">
+                <div class="input-group w-50">
+                    <input type="text" class="form-control" placeholder="Buscar Terrenos..">
+                    <button class="btn btn-outline-secondary" type="button" id="button-addon2">Buscar</button>
+                </div>
+                <button class="btn btn-primary" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal">Agregar Terreno</button>
+            </div>
+        </div>
+    </header>
+    <main class="container mt-5">
+        <table class="table table-striped table-bordered">
+            <thead class="table-dark">
+                <tr>
+                    <th>#</th>
+                    <th>Numero de plano</th>
+                    <th>Colindante Este</th>
+                    <th>Colindante Norte</th>
+                    <th>Colindante Sur</th>
+                    <th>Colindante Oeste</th>
+                    <th>Medida</th>
+                    <th>N° Escritura</th>
+                    <th>Acción</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>1</td>
+                    <td>123-456-789</td>
+                    <td>123-456-789</td>
+                    <td>123-456-789</td>
+                    <td>123-456-789</td>
+                    <td>123-456-789</td>
+                    <td>123-456-789</td>
+                    <td>123-456-789</td>
+                    <td><input class="form-check-input" type="checkbox" value="" id="flexCheckDefault"></td>
+                </tr>
+                <tr>
+                    <td>1</td>
+                    <td>123-456-789</td>
+                    <td>123-456-789</td>
+                    <td>123-456-789</td>
+                    <td>123-456-789</td>
+                    <td>123-456-789</td>
+                    <td>123-456-789</td>
+                    <td>123-456-789</td>
+                    <td><input class="form-check-input" type="checkbox" value="" id="flexCheckDefault"></td>
+                </tr>
+            </tbody>
+        </table>
+    </main>
+
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Agregar Terreno</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <div class="mb-3">
+                            <label for="nombre" class="form-label">Numero de plano:</label>
+                            <input type="text" class="form-control" id="nombre">
+                        </div>
+                        <div class="mb-3">
+                            <label for="email" class="form-label">Colindante Este:</label>
+                            <input type="email" class="form-control" id="email">
+                        </div>
+                        <div class="mb-3">
+                            <label for="telefono" class="form-label">Colindante Norte:</label>
+                            <input type="text" class="form-control" id="telefono">
+                        </div>
+                        <div class="mb-3">
+                            <label for="telefono" class="form-label">Colindante Sur:</label>
+                            <input type="text" class="form-control" id="telefono">
+                        </div>
+                        <div class="mb-3">
+                            <label for="telefono" class="form-label">Colindante Oeste:</label>
+                            <input type="text" class="form-control" id="telefono">
+                        </div>
+                        <div class="mb-3">
+                            <label for="telefono" class="form-label">Medida:</label>
+                            <input type="text" class="form-control" id="telefono">
+                        </div>
+                        <div class="mb-3">
+                            <label for="telefono" class="form-label">N° Escritura:</label>
+                            <input type="text" class="form-control" id="telefono">
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                    <button type="button" class="btn btn-primary">Guardar</button>
+                </div>
+            </div>
+        </div>
+    </div>
 </body>
 </html>
