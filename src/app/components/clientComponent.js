@@ -1,16 +1,33 @@
-import { obtenerClientes } from "../Service/ClienteService.js";
+//import { obtenerClientes } from "../Service/ClienteService.js";
 
 function send() {
-    let clienteData = {
-        nombre: $("#nombre").val(),
-        apellidos: $("#apellidos").val(),
-        estadoCivil: $("#estadoCivil").val(),
-        direccion: $("#direccion").val(),
-        profesion: $("#profesion").val(),
-        nacionalidad: $("#nacionalidad").val()
-    };
-
-    crearCliente(clienteData); 
+  const clienteData = {
+      cedula: $("#cedula").val(),
+      nombre: $("#nombre").val(),
+      apellidos: $("#apellidos").val(),
+      estadoCivil: $("#estadoCivil").val(),
+      direccion: $("#direccion").val(),
+      profesion: $("#profesion").val(),
+      nacionalidad: $("#nacionalidad").val()
+  };
+  console.log(clienteData)
+  fetch('http://localhost:8080/cliente', {
+      method: 'POST',
+      headers: {
+          'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(clienteData)
+  })
+  .then(response => {
+      if (!response.ok) {
+          throw new Error('Error al enviar los datos del cliente');
+      }
+      console.log('Cliente creado exitosamente');
+      // Aquí puedes realizar cualquier acción adicional después de que se envíen los datos, como cargar una nueva tabla, etc.
+  })
+  .catch(error => {
+      console.error('Error al enviar los datos del cliente:', error);
+  });
 }
 
 function update() {
@@ -22,7 +39,6 @@ function destroy() {
 $(document).ready(function () {
   console.log("esta levantando");
     cargarTabla();
-
 });
 
 async function cargarTabla() {
@@ -31,7 +47,8 @@ async function cargarTabla() {
     const response = await obtenerClientes();
     console.log('Clientes obtenidos:', response);
     $("#data-tableClient").empty(); 
-    response.data.forEach(cliente => {
+    data.forEach(cliente => {
+     
         let filaHTML = `<tr data-ced="${cliente.cedula}">
             <td>${cliente.nombre}</td>
             <td>${cliente.apellidos}</td>
@@ -48,3 +65,4 @@ async function cargarTabla() {
     console.error('Error al obtener los clientes:', error);
   }
 }
+$('#sendClient').click(send);
