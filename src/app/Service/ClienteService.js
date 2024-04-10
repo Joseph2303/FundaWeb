@@ -9,7 +9,7 @@ async function crearCliente(nuevoCliente) {
       mode: 'no-cors'
     });
     console.log('Nuevo cliente creado:', response); // No se puede acceder al cuerpo de la respuesta
-    cargarTabla(); 
+     
   } catch (error) {
     console.error('Error al crear el cliente:', error);
   }
@@ -36,7 +36,7 @@ async function actualizarCliente(cedula, clienteActualizado) {
       mode: 'no-cors'
     });
     console.log('Cliente actualizado:', response); // No se puede acceder al cuerpo de la respuesta
-    cargarTabla(); 
+     
   } catch (error) {
     console.error('Error al actualizar el cliente:', error);
   }
@@ -48,7 +48,7 @@ async function eliminarCliente(cedula) {
       mode: 'no-cors'
     });
     console.log('Mensaje del servidor:', response); // No se puede acceder al cuerpo de la respuesta
-    cargarTabla(); 
+     
   } catch (error) {
     console.error('Error al eliminar el cliente:', error);
   }
