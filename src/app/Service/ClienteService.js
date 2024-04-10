@@ -44,9 +44,7 @@ async function actualizarCliente(cedula, clienteActualizado) {
 
 async function eliminarCliente(cedula) {
   try {
-    const response = await axiosApi.delete(`/cliente/${cedula}`, {
-      mode: 'no-cors'
-    });
+    const response = await axiosApi.delete(`/cliente/${cedula}`);
     console.log('Mensaje del servidor:', response); // No se puede acceder al cuerpo de la respuesta
      
   } catch (error) {
