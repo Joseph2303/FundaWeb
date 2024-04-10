@@ -176,33 +176,6 @@
     
     <script src="/src/app/components/vehicleComponent.js" type="module"></script>
     <script src="/src/app/script/Vehicle.js" type="module"></script>
-    <script>// Esta función carga las opciones de documentos desde la base de datos y las agrega al select
-        async function cargarDocumentos() {
-            try {
-                // Obtener la lista de documentos desde la base de datos (suponiendo que hay una función llamada obtenerDocumentos en tu módulo de servicio)
-                const documentos = await obtenerDocumentos();
-        
-                // Obtener el select de documentos por su ID
-                const selectDocumento = document.getElementById('documento');
-        
-                // Limpiar el select por si ya contiene opciones
-                selectDocumento.innerHTML = '';
-        
-                // Iterar sobre la lista de documentos y agregar cada uno como una opción en el select
-                documentos.forEach(documento => {
-                    const option = document.createElement('option');
-                    option.value = documento.id; // Suponiendo que cada documento tiene un ID
-                    option.textContent = documento.nombre; // Suponiendo que cada documento tiene un nombre
-                    selectDocumento.appendChild(option);
-                });
-            } catch (error) {
-                console.error('Error al cargar los documentos:', error);
-            }
-        }
-        
-        // Llamar a la función cargarDocumentos cuando se cargue el documento HTML
-        document.addEventListener('DOMContentLoaded', cargarDocumentos);
-        </script>
 </body>
 
 </html>
