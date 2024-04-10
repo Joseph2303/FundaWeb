@@ -33,7 +33,7 @@
             <h1 class="text-center">Vehiculos</h1>
             <div class="d-flex justify-content-between align-items-center mt-3">
                 <div class="input-group w-50">
-                    <input type="text" class="form-control" placeholder="Buscar Vehiculos..">
+                    <input id="busquedaVehicle" oninput="filtrar()" type="text" class="form-control" placeholder="Buscar Vehiculos..">
                     <button class="btn btn-outline-secondary" type="button" id="button-addon2">Buscar</button>
                 </div>
                 <button class="btn btn-primary" type="button" data-bs-toggle="modal"
@@ -42,15 +42,15 @@
         </div>
     </header>
     <main class="container mt-5">
-        <div style="float: right;">
-            <button type="button" class="btn btn-outline-primary" type="button" data-bs-toggle="modal"
+        <div id="btn-box" style="float: right; display: none;">
+            <button id="btn-actualizar" type="button" class="btn btn-outline-primary" type="button" data-bs-toggle="modal"
                 data-bs-target="#Actualizar">Actualizar</button>
-            <button type="button" class="btn btn-outline-danger">Eliminar</button>
+            <button id="btn-eliminar" type="button" class="btn btn-outline-danger">Eliminar</button>
         </div>
         <br>
         <br>
         <div class="Cajon">
-            <table class="table table-striped table-bordered">
+            <table id="vehicle-table" class="table table-striped table-bordered">
                 <thead class="table-dark">
                     <tr>
                         <th>Placa</th>
@@ -63,7 +63,7 @@
                         <th>Acción</th>
                     </tr>
                 </thead>
-                <tbody>
+                <tbody id="data-tableVehiculo">
                 </tbody>
             </table>
         </div>
@@ -79,38 +79,45 @@
                 <div class="modal-body">
                     <form>
                         <div class="mb-3">
-                            <label for="nombre" class="form-label">Placa:</label>
-                            <input type="text" class="form-control" id="nombre">
+                            <label for="placa" class="form-label">Placa:</label>
+                            <input type="text" class="form-control" id="placa">
                         </div>
                         <div class="mb-3">
-                            <label for="email" class="form-label">Carroceria:</label>
-                            <input type="email" class="form-control" id="email">
+                            <label for="carroceria" class="form-label">Carroceria:</label>
+                            <input type="text" class="form-control" id="carroceria">
                         </div>
                         <div class="mb-3">
-                            <label for="telefono" class="form-label">Estilo:</label>
-                            <input type="text" class="form-control" id="telefono">
+                            <label for="estilo" class="form-label">Estilo:</label>
+                            <input type="text" class="form-control" id="estilo">
                         </div>
                         <div class="mb-3">
-                            <label for="telefono" class="form-label">Marca:</label>
-                            <input type="text" class="form-control" id="telefono">
+                            <label for="marca" class="form-label">Marca:</label>
+                            <input type="text" class="form-control" id="marca">
                         </div>
                         <div class="mb-3">
-                            <label for="telefono" class="form-label">Marca Motor:</label>
-                            <input type="text" class="form-control" id="telefono">
+                            <label for="marcaMotor" class="form-label">Marca Motor:</label>
+                            <input type="text" class="form-control" id="marcaMotor">
                         </div>
                         <div class="mb-3">
-                            <label for="telefono" class="form-label">N° Chasis:</label>
-                            <input type="text" class="form-control" id="telefono">
+                            <label for="numeroChasis" class="form-label">N° Chasis:</label>
+                            <input type="text" class="form-control" id="numeroChasis">
                         </div>
                         <div class="mb-3">
-                            <label for="telefono" class="form-label">N° Motor:</label>
-                            <input type="text" class="form-control" id="telefono">
+                            <label for="numeroMotor" class="form-label">N° Motor:</label>
+                            <input type="text" class="form-control" id="numeroMotor">
                         </div>
+                        <div class="mb-3">
+                            <label for="documento" class="form-label">Documento</label>
+                            <select class="form-select" id="documento">
+                                <!-- Aquí se cargarán las opciones desde la base de datos mediante JavaScript -->
+                            </select>
+                        </div>
+                        
                     </form>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-                    <button type="button" class="btn btn-primary">Guardar</button>
+                    <button id="sendVehicle" type="button" class="btn btn-primary">Guardar</button>
                 </div>
             </div>
         </div>
@@ -126,43 +133,76 @@
                 <div class="modal-body">
                     <form>
                         <div class="mb-3">
-                            <label for="nombre" class="form-label">Placa:</label>
-                            <input type="text" class="form-control" id="nombre">
+                            <label for="placaAct" class="form-label">Placa:</label>
+                            <input type="text" class="form-control" id="placaAct">
                         </div>
                         <div class="mb-3">
-                            <label for="email" class="form-label">Carroceria:</label>
-                            <input type="email" class="form-control" id="email">
+                            <label for="carroceriaAct" class="form-label">Carroceria:</label>
+                            <input type="text" class="form-control" id="carroceriaAct">
                         </div>
                         <div class="mb-3">
-                            <label for="telefono" class="form-label">Estilo:</label>
-                            <input type="text" class="form-control" id="telefono">
+                            <label for="estiloAct" class="form-label">Estilo:</label>
+                            <input type="text" class="form-control" id="estiloAct">
                         </div>
                         <div class="mb-3">
-                            <label for="telefono" class="form-label">Marca:</label>
-                            <input type="text" class="form-control" id="telefono">
+                            <label for="marcaAct" class="form-label">Marca:</label>
+                            <input type="text" class="form-control" id="marcaAct">
                         </div>
                         <div class="mb-3">
-                            <label for="telefono" class="form-label">Marca Motor:</label>
-                            <input type="text" class="form-control" id="telefono">
+                            <label for="marcaMotorAct" class="form-label">Marca Motor:</label>
+                            <input type="text" class="form-control" id="marcaMotorAct">
                         </div>
                         <div class="mb-3">
-                            <label for="telefono" class="form-label">N° Chasis:</label>
-                            <input type="text" class="form-control" id="telefono">
+                            <label for="numeroChasisAct" class="form-label">N° Chasis:</label>
+                            <input type="text" class="form-control" id="numeroChasisAct">
                         </div>
                         <div class="mb-3">
-                            <label for="telefono" class="form-label">N° Motor:</label>
-                            <input type="text" class="form-control" id="telefono">
+                            <label for="numeroMotorAct" class="form-label">N° Motor:</label>
+                            <input type="text" class="form-control" id="numeroMotorAct">
+                        </div>
+                        <div class="mb-3">
+                            <label for="documentoAct" class="form-label">Documento</label>
+                            <input type="text" class="form-control" id="documentoAct">
                         </div>
                     </form>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cancelar</button>
-                    <button type="button" class="btn btn-primary">Actualizar</button>
+                    <button id="updateVehicle" type="button" class="btn btn-primary">Actualizar</button>
                 </div>
             </div>
         </div>
     </div>
+    
     <script src="/src/app/components/vehicleComponent.js" type="module"></script>
+    <script src="/src/app/script/Vehicle.js" type="module"></script>
+    <script>// Esta función carga las opciones de documentos desde la base de datos y las agrega al select
+        async function cargarDocumentos() {
+            try {
+                // Obtener la lista de documentos desde la base de datos (suponiendo que hay una función llamada obtenerDocumentos en tu módulo de servicio)
+                const documentos = await obtenerDocumentos();
+        
+                // Obtener el select de documentos por su ID
+                const selectDocumento = document.getElementById('documento');
+        
+                // Limpiar el select por si ya contiene opciones
+                selectDocumento.innerHTML = '';
+        
+                // Iterar sobre la lista de documentos y agregar cada uno como una opción en el select
+                documentos.forEach(documento => {
+                    const option = document.createElement('option');
+                    option.value = documento.id; // Suponiendo que cada documento tiene un ID
+                    option.textContent = documento.nombre; // Suponiendo que cada documento tiene un nombre
+                    selectDocumento.appendChild(option);
+                });
+            } catch (error) {
+                console.error('Error al cargar los documentos:', error);
+            }
+        }
+        
+        // Llamar a la función cargarDocumentos cuando se cargue el documento HTML
+        document.addEventListener('DOMContentLoaded', cargarDocumentos);
+        </script>
 </body>
 
 </html>

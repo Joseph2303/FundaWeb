@@ -1,4 +1,4 @@
-import axiosApi from './ApiService';
+import { axiosApi } from './ApiService.js';
 
 // Función para obtener todos los vehículos
 async function obtenerVehiculos() {

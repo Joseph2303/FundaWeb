@@ -1,43 +1,85 @@
-function send(){
+import { obtenerVehiculos, guardarVehiculo, getVehiculoByMatricula, eliminarVehiculo, actualizarVehiculo } from "../Service/VehiculoService.js";
 
+async function send() {
+    const vehiculoData = {
+        placa: $("#placa").val(),
+        marca: $("#marca").val(),
+        estilo: $("#estilo").val(),
+        carroceria: $("#carroceria").val(),
+        numeroChasis: $("#numeroChasis").val(),
+        numeroMotor: $("#numeroMotor").val(),
+        marcaMotor: $("#marcaMotor").val(),
+        valorFiscal: $("#valorFiscal").val(),
+        documento: $("#documento").val()
+    };
+
+    try {
+        await guardarVehiculo(vehiculoData);
+        cargarTabla();
+    } catch (error) {
+        console.error('Error al enviar los datos del vehículo:', error);
+    }
 }
 
-function update(){
-
+async function update() {
+    const vehiculoData = {
+        placa: $("#placaAct").val(),
+        carroceria: $("#carroceriaAct").val(),
+        estilo: $("#estiloAct").val(),
+        marca: $("#marcaAct").val(),
+        marcaMotor: $("#marcaMotorAct").val(),
+        numeroChasis: $("#numeroChasisAct").val(),
+        numeroMotor: $("#numeroMotorAct").val(),
+        documento: $("#documentoAct").val()
+    };
+    console.log(vehiculoData)
+    try {
+        await actualizarVehiculo($("#placaAct").val(), vehiculoData); // Pasar la placa como primer parámetro
+        cargarTabla();
+    } catch (error) {
+        console.error('Error al actualizar el vehículo:', error);
+    }
 }
 
-function destroy(){
-
+async function destroy(placa) {
+    try {
+        await eliminarVehiculo(placa);
+        cargarTabla();
+    } catch (error) {
+        console.error('Error al eliminar el cliente:', error);
+    }
 }
 
 $(document).ready(function () {
     cargarTabla();
 });
 
-function cargarTabla() {
-    $.ajax({
-        url: "http://localhost:8080/cliente",
-        type: "GET"
-    }).done(function (response) {
-        $("#data-tableClient").empty(); // Vaciar la tabla antes de cargar los nuevos datos
-        var respObj = response.data;
-        for (k in respObj) {         
-            let filaHTML = `<tr data-ced="${respObj[k].cedula}">
-                <td>${respObj[k].cedula}</td>
-                <td>${respObj[k].nombre}</td>
-                <td>${respObj[k].apellidos}</td>
-                <td>${respObj[k].direccion}</td>
-                <td>${respObj[k].profesion}</td>
-                <td>${respObj[k].nacionalidad}</td>
+async function cargarTabla() {
+    try {
+        const response = await obtenerVehiculos();
+        $("#data-tableVehiculo").empty();
+        response.data.forEach(vehiculo => {
+            const vehiculoString = JSON.stringify(vehiculo);
+            let filaHTML = `<tr data-placa="${vehiculo.placa}" data-vehicle='${vehiculoString}'>
+                <td>${vehiculo.placa}</td>
+                <td>${vehiculo.marca}</td>
+                <td>${vehiculo.estilo}</td>
+                <td>${vehiculo.carroceria}</td>
+                <td>${vehiculo.numeroChasis}</td>
+                <td>${vehiculo.numeroMotor}</td>
+                <td>${vehiculo.marcaMotor}</td>
+                <td>${vehiculo.valorFiscal}</td>
+                <td>${vehiculo.documento}</td>
                 <td><input type="checkbox" class="checkbox-accion" onchange=""></td>
             </tr>`;
-
-            let fila = $(filaHTML);
-
-            $("#data-tableClient").append(fila);
-        }
-    }).fail(function (error) {
-        console.log(error)
-    });
+            $("#data-tableVehiculo").append(filaHTML);
+        });
+    } catch (error) {
+        console.error('Error al obtener los vehículos:', error);
+    }
 }
 
+$('#sendVehicle').click(send);
+$('#updateVehicle').click(update);
+
+export { destroy, update, send };

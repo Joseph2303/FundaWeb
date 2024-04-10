@@ -17,12 +17,10 @@
 
         .Cajon::-webkit-scrollbar {
             width: 10px;
-            /* Ajusta el ancho de la barra según tu diseño */
         }
 
         .Cajon::-webkit-scrollbar-thumb {
             background-color: #3a3a3a;
-            /* Hace la barra de desplazamiento transparente */
         }
     </style>
 </head>
@@ -33,7 +31,7 @@
             <h1 class="text-center">Terrenos</h1>
             <div class="d-flex justify-content-between align-items-center mt-3">
                 <div class="input-group w-50">
-                    <input type="text" class="form-control" placeholder="Buscar Terrenos..">
+                    <input id="busquedaVehicle" oninput="filtrar()" type="text" class="form-control" placeholder="Buscar Terrenos..">
                     <button class="btn btn-outline-secondary" type="button" id="button-addon2">Buscar</button>
                 </div>
                 <button class="btn btn-primary" type="button" data-bs-toggle="modal"
@@ -43,9 +41,9 @@
     </header>
     <main class="container mt-5">
         <div style="float: right;">
-            <button type="button" class="btn btn-outline-primary" type="button" data-bs-toggle="modal"
+            <button id="btn-actualizar" type="button" class="btn btn-outline-primary" type="button" data-bs-toggle="modal"
                 data-bs-target="#Actualizar">Actualizar</button>
-            <button type="button" class="btn btn-outline-danger">Eliminar</button>
+            <button id="btn-eliminar" type="button" class="btn btn-outline-danger">Eliminar</button>
         </div>
         <br>
         <br>
@@ -80,38 +78,38 @@
                 <div class="modal-body">
                     <form>
                         <div class="mb-3">
-                            <label for="nombre" class="form-label">Numero de plano:</label>
-                            <input type="text" class="form-control" id="nombre">
+                            <label for="numeroPlano" class="form-label">Numero de plano:</label>
+                            <input type="text" class="form-control" id="numeroPlano">
                         </div>
                         <div class="mb-3">
-                            <label for="email" class="form-label">Colindante Este:</label>
-                            <input type="email" class="form-control" id="email">
+                            <label for="colindanteEste" class="form-label">Colindante Este:</label>
+                            <input type="text" class="form-control" id="colindanteEste">
                         </div>
                         <div class="mb-3">
-                            <label for="telefono" class="form-label">Colindante Norte:</label>
-                            <input type="text" class="form-control" id="telefono">
+                            <label for="colindanteNorte" class="form-label">Colindante Norte:</label>
+                            <input type="text" class="form-control" id="colindanteNorte">
                         </div>
                         <div class="mb-3">
-                            <label for="telefono" class="form-label">Colindante Sur:</label>
-                            <input type="text" class="form-control" id="telefono">
+                            <label for="colindanteSur" class="form-label">Colindante Sur:</label>
+                            <input type="text" class="form-control" id="colindanteSur">
                         </div>
                         <div class="mb-3">
-                            <label for="telefono" class="form-label">Colindante Oeste:</label>
-                            <input type="text" class="form-control" id="telefono">
+                            <label for="colindanteOeste" class="form-label">Colindante Oeste:</label>
+                            <input type="text" class="form-control" id="colindanteOeste">
                         </div>
                         <div class="mb-3">
-                            <label for="telefono" class="form-label">Medida:</label>
-                            <input type="text" class="form-control" id="telefono">
+                            <label for="medida" class="form-label">Medida:</label>
+                            <input type="text" class="form-control" id="medida">
                         </div>
                         <div class="mb-3">
-                            <label for="telefono" class="form-label">N° Escritura:</label>
-                            <input type="text" class="form-control" id="telefono">
+                            <label for="documento" class="form-label">N° Escritura:</label>
+                            <input type="text" class="form-control" id="documento">
                         </div>
                     </form>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-                    <button type="button" class="btn btn-primary">Guardar</button>
+                    <button id="sendTerrain" type="button" class="btn btn-primary">Guardar</button>
                 </div>
             </div>
         </div>
@@ -127,43 +125,44 @@
                 <div class="modal-body">
                     <form>
                         <div class="mb-3">
-                            <label for="nombre" class="form-label">Numero de plano:</label>
-                            <input type="text" class="form-control" id="nombre">
+                            <label for="numeroPlanoAct" class="form-label">Numero de plano:</label>
+                            <input type="text" class="form-control" id="numeroPlanoAct">
                         </div>
                         <div class="mb-3">
-                            <label for="email" class="form-label">Colindante Este:</label>
-                            <input type="email" class="form-control" id="email">
+                            <label for="colindanteEsteAct" class="form-label">Colindante Este:</label>
+                            <input type="text" class="form-control" id="colindanteEsteAct">
                         </div>
                         <div class="mb-3">
-                            <label for="telefono" class="form-label">Colindante Norte:</label>
-                            <input type="text" class="form-control" id="telefono">
+                            <label for="colindanteNorteAct" class="form-label">Colindante Norte:</label>
+                            <input type="text" class="form-control" id="colindanteNorteAct">
                         </div>
                         <div class="mb-3">
-                            <label for="telefono" class="form-label">Colindante Sur:</label>
-                            <input type="text" class="form-control" id="telefono">
+                            <label for="colindanteSurAct" class="form-label">Colindante Sur:</label>
+                            <input type="text" class="form-control" id="colindanteSurAct">
                         </div>
                         <div class="mb-3">
-                            <label for="telefono" class="form-label">Colindante Oeste:</label>
-                            <input type="text" class="form-control" id="telefono">
+                            <label for="colindanteOesteAct" class="form-label">Colindante Oeste:</label>
+                            <input type="text" class="form-control" id="colindanteOesteAct">
                         </div>
                         <div class="mb-3">
-                            <label for="telefono" class="form-label">Medida:</label>
-                            <input type="text" class="form-control" id="telefono">
+                            <label for="medidaAct" class="form-label">Medida:</label>
+                            <input type="text" class="form-control" id="medidaAct">
                         </div>
                         <div class="mb-3">
-                            <label for="telefono" class="form-label">N° Escritura:</label>
-                            <input type="text" class="form-control" id="telefono">
+                            <label for="documentoAct" class="form-label">N° Escritura:</label>
+                            <input type="text" class="form-control" id="documentoAct">
                         </div>
                     </form>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cancelar</button>
-                    <button type="button" class="btn btn-primary">Actualizar</button>
+                    <button id="updateTerrain" type="button" class="btn btn-primary">Actualizar</button>
                 </div>
             </div>
         </div>
     </div>
-        <script src="/src/app/components/terrain.js"></script>
+    <script src="/src/app/components/terrainComponent.js" type="module"></script>
+    <script src="/src/app/script/Terrain.js" type="module"></script>
 </body>
 
 </html>

@@ -3,8 +3,7 @@ const tabla = document.getElementById("client-table");
 const btnBox = document.getElementById("btn-box");
 const eliminarButton = document.getElementById("btn-eliminar");
 const actualizarButton = document.getElementById("btn-actualizar");
-const deleteButton = document.getElementById("delete");
-const updateBtn = document.getElementById("update");
+
 
 function filtrar() {
     var inputBusqueda = document.getElementById('busquedaClient');

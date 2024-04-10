@@ -58,7 +58,6 @@ async function cargarTabla() {
     const response = await obtenerClientes();
     $("#data-tableClient").empty();
     response.data.forEach(cliente => {
-      // Convertir el objeto cliente a cadena JSON
       const clienteString = JSON.stringify(cliente);
       let filaHTML = `<tr data-ced="${cliente.cedula}" data-cliente='${clienteString}'>
             <td>${cliente.nombre}</td>
